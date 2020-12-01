@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        香蕉<input type="checkbox" value="3" v-model='checbox' @change='fun1'>
+        苹果<input type="checkbox" value="4" v-model='checbox' @change='fun1'>
+         橘子<input type="checkbox" value="1" v-model='checbox' @change='fun1'>
+        西瓜<input type="checkbox" value="2" v-model='checbox' @change='fun1'>
+        <div >
+            <img style="width:100px;display: inline-block;" v-for='item in paths' :src="item" alt="">
+        </div>
+  
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                checbox: [],
+                paths: []
+            },
+            methods: {
+                fun1: function (e) {
+                    let path = this.checbox.map(function (v, i) {
+                        return `./package/img/${v}.jpg`
+                    })
+                    this.paths = path
+                }
+            },
+            watch: {
+                checbox: function () {
+                    console.log(this.checbox);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
