@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue基础/package/vue.js"></script>
+    <link rel="stylesheet" href="./package/bootstrap.css">
+    <link rel="stylesheet" href="./package/bootstrap.css.map">
+    <style>
+       
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+       <demo :data1='data1'></demo>
+       <demo2 :data2='data2'></demo2>
+    </div>
+
+    <script>
+        let eventHub=new Vue()
+        Vue.component('demo',{
+            data() {
+                return {
+                    
+                }
+            },
+            props:['data1']
+            ,
+            template:`
+            <div>
+                <div>
+                    {{data1}}
+                </div>
+                <button @click='fundemo'>传demo1！！</button>
+            </div>
+                
+            `,
+            methods:{
+                fundemo(){
+                    eventHub.$emit('a','a')
+                }
+            }
+            ,
+            mounted(){
+                eventHub.$on('b',(val)=>{
+                    console.log(val);
+                })
+            }
+        })
+        Vue.component('demo2',{
+            data() {
+                return {
+                    
+                }
+            },
+            props:['data2']
+            ,
+            template:`
+            <div>
+               <div>
+                   {{data2}}
+               </div>
+                <button @click='fun'>传demo！！</button>
+            </div>
+                
+            `,
+            methods:{
+                fun(){
+                    eventHub.$emit('b',1)
+                }
+                
+            }
+            ,
+            mounted() {
+                eventHub.$on('a',(val)=>{
+                    console.log(val);
+                })
+            },
+        })
+        let app = new Vue({
+            el:'#app',
+            data:{
+                data1:111,
+                data2:'222'
+            },
+            methods: {
+                fun1(e){
+                    console.log(e);
+                }
+            },
+            computed: {
+                
+            },
+        })
+    </script>
+</body>
+
+</html>

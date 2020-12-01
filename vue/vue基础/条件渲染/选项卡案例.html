@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../package/vue.js"></script>
+    <style>
+        span{
+            display: inline-block;
+            width: 100px;
+            height:30px;
+            color: brown;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        img{
+            border: 1px solid blakc;
+            width: 500px;
+            display: none;
+        }
+        .imgBloak{
+            display: inline;
+        }
+        .btnclick{
+            background-color: orange;
+        }
+        .Imgblock{
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <span  :class='countIndex==index?"btnclick":""' @click="func1(index,$event)" v-for="(value,index) in arrObj">{{value.uname}}</span>
+        </ul>
+        <div>
+            <img :class='countIndex==index?"Imgblock":""'  :src="value.pic" v-for="(value,index) in arrObj">
+        </div>
+    </div>
+
+    <script>
+        Vue.config.keyCodes.a = 65;
+        let v = new Vue({
+            el: '#app', 
+            data: {
+                btnclick:'btnclick',
+                Imgblock:'Imgblock',
+                countIndex:0,
+                arrObj:[
+                {uname:'banana',pic:'./img/banana.jpg'},
+                {uname:'apple',pic:'./img/apple.png'},
+                {uname:'orange',pic:'./img/orange.jpg'},
+                ]
+            },
+            methods: {
+                func1:function(i,e){
+                    this.countIndex=i
+                    
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

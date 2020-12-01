@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: relative;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        .box_1 {
+            display: flex;
+            position: absolute;
+            top: 85%;
+
+            left: 46%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box_1 li {
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            margin: 4px;
+        }
+
+        #l_btn {
+            position: absolute;
+            width: 30px;
+            height: 20%;
+            left: 0px;
+            top: 45%;
+        }
+        .oimg{
+            opacity: 0;
+            animation-name:imgTransition;
+            animation-duration: .5s;
+            animation-timing-function: ease-in;
+            animation-fill-mode: both;
+        }
+        @keyframes imgTransition {
+            50%{
+                opacity: 0;
+            }100%{
+                opacity: 1;
+            }
+        }
+        #r_btn {
+            position: absolute;
+            width: 30px;
+            height: 20%;
+            right: 0px;
+            top: 45%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>
+            <img class="oimg" width="100%" src="./img/0.jpg" alt="">
+        </div>
+        <button id="l_btn">
+            <</button> <button id="r_btn">>
+        </button>
+        <ul class='box_1'>
+            <li style="background-color: blue;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        let li = document.querySelectorAll('li');
+        let l_btn = document.getElementById('l_btn');
+        let r_btn = document.getElementById('r_btn');
+        let img = document.querySelectorAll('img')[0];
+        let index = 0;
+        setInterval(function () {
+            index++
+            if (index == 4) {
+                index = 0;
+            }
+            for (let i = 0; i < li.length; i++) {
+                li[i].style.backgroundColor = 'red'
+            }
+            li[index].style.backgroundColor = 'blue'
+
+            img.src = `./img/${index}.jpg`
+        }, 3000)
+        r_btn.onclick = function () {
+            index++
+            if (index == 4) {
+                index = 0;
+            }
+            for (let i = 0; i < li.length; i++) {
+                li[i].style.backgroundColor = 'red'
+            }
+            li[index].style.backgroundColor = 'blue'
+            img.src = `./img/${index}.jpg`
+        }
+        l_btn.onclick = function () {
+            if (index == 0) {
+                index = 4;
+            }
+            index--
+            for (let i = 0; i < li.length; i++) {
+                li[i].style.backgroundColor = 'red'
+            }
+            li[index].style.backgroundColor = 'blue'
+            img.src = `./img/${index}.jpg`
+        }
+        for (let i = 0; i < li.length; i++) {
+            li[i].onclick = function () {
+                index = i;
+                console.log(index);
+                for (let i = 0; i < li.length; i++) {
+                    li[i].style.backgroundColor = 'red'
+                }
+                li[i].style.backgroundColor = 'blue'
+                img.src = `./img/${index}.jpg`
+            }
+        }
+    </script>
+</body>
+
+</html>

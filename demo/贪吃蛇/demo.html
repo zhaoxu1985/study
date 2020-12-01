@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p button {
+            width: 100px;
+        }
+
+        body {
+
+            position: relative;
+        }
+
+        #map {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+
+            left: 0;
+            top: 0;
+            /* border: 1px solid black; */
+        }
+
+        table {
+            width: 400px;
+            height: 400px;
+            border-right: 1px solid #F00;
+            border-bottom: 1px solid #F00;
+        }
+
+        table td {
+            border-left: 1px solid #F00;
+            border-top: 1px solid #F00;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div id="map">
+
+    </div>
+    <p id="scoring">分数:</p>
+    <p id="sudu">
+        <button>快</button>
+        <button>中</button>
+        <button>慢</button>
+    </p>
+
+    <audio src="" ></audio>
+
+    <embed src="" type="">
+
+
+    <script>
+
+
+        var map = document.getElementById('map');
+        var scoring = document.getElementById("scoring")
+        var sudu = document.getElementById("sudu");
+        
+
+
+        function createDiv(color, id) {
+            //创建DIV节点
+            var div = document.createElement('div');
+            map.appendChild(div);
+            div.style.width = "20px";
+            div.style.height = "20px"
+            div.style.backgroundColor = color;
+            div.style.position = "absolute";
+            var trL = Math.floor(Math.random() * 20) * 20 + "px";
+            var trT = Math.floor(Math.random() * 20) * 20 + "px";
+            div.style.left = trL;
+            div.style.top = trT;
+            // div.setAttribute("id", id);
+            // console.log(trL);
+            return div;
+        }
+        var tou = createDiv('red')
+        var shiwu = createDiv('blue', "shiwu");
+        var bodyNodes = [];//存放每一次吃的到的最后一个身体；
+        //计分
+        var num=0;
+
+        tou.value = "右";
+        function move() {
+                for(var i = bodyNodes.length-1;i>=0;i--){
+                    switch (bodyNodes[i].value) { 
+                        case "左":
+                            bodyNodes[i].style.left = parseInt(bodyNodes[i].style.left) - 20 + "px";
+                           
+                        
+                            break;
+
+                        case "上":
+                            bodyNodes[i].style.top = parseInt(bodyNodes[i].style.top) - 20 + "px";
+                            
+                            break;
+
+                        case "右":
+                            bodyNodes[i].style.left = parseInt(bodyNodes[i].style.left) + 20 + "px";
+                            
+                            break;
+
+                        case "下":
+                            bodyNodes[i].style.top = parseInt(bodyNodes[i].style.top) + 20 + "px";
+                                
+                            break;
+                     }
+                     if(i==0){
+                         bodyNodes[i].value=tou.value;
+                     }else{
+                         bodyNodes[i].value = bodyNodes[i-1].value;
+                     }
+                
+                }
+
+
+
+
+            switch (tou.value) {
+                case "左":
+                    tou.style.left = parseInt(tou.style.left) - 20 + "px";
+                        if (parseInt(tou.style.left) <0) {
+                            
+                            alert("出界了");
+                            tou.style.left=Math.floor(Math.random() * 20) * 20 + "px";
+                            tou.style.top=Math.floor(Math.random() * 20) * 20 + "px";
+                            clearInterval(interval);
+                            
+                            // // break;
+                            // interval.clear
+                        }
+                    break;
+
+                case "上":
+                    tou.style.top = parseInt(tou.style.top) - 20 + "px";
+                    if (parseInt(tou.style.top) <0){
+                            
+                            alert("出界了");
+                            tou.style.left=Math.floor(Math.random() * 20) * 20 + "px";
+                            tou.style.top=Math.floor(Math.random() * 20) * 20 + "px";
+                            clearInterval(interval);
+                            
+                        }
+                    break;
+
+                case "右":
+                    tou.style.left = parseInt(tou.style.left) + 20 + "px";
+                        if (parseInt(tou.style.left) >=400){
+                            alert("出界了");
+                            tou.style.left=Math.floor(Math.random() * 20) * 20 + "px";
+                            tou.style.top=Math.floor(Math.random() * 20) * 20 + "px";
+                            clearInterval(interval);
+                        }
+                    break;
+
+                case "下":
+                    tou.style.top = parseInt(tou.style.top) + 20 + "px";
+                        if (parseInt(tou.style.top) >= 400){
+                            alert("出界了");
+                            tou.style.left=Math.floor(Math.random() * 20) * 20 + "px";
+                            tou.style.top=Math.floor(Math.random() * 20) * 20 + "px";
+                            clearInterval(interval);
+                             
+                        }
+                    break;
+            }
+
+            
+            //碰撞检测
+            
+            if(tou.style.left==shiwu.style.left && tou.style.top==shiwu.style.top){
+                shiwu.style.left=Math.floor(Math.random() * 20) * 20 + "px";
+                shiwu.style.top=Math.floor(Math.random() * 20) * 20 + "px";
+                num++
+                scoring.innerHTML="分数:"+num;
+                var bodyNode = createDiv("yellow")
+                // console.log(num)
+
+                //增加身体
+                var lastNode //最后一个身体
+                if (bodyNodes.length>0) {
+                    lastNode =bodyNodes[ bodyNodes.length-1];
+                    //如果身体>;
+                }else{
+                    lastNode = tou; //
+                }
+                console.log(lastNode);
+
+                switch(lastNode.value){
+                    case "左":bodyNode.style.left=parseInt(lastNode.style.left)+20+"px";
+                                bodyNode.style.top=lastNode.style.top;
+                        break;
+                    case "上":bodyNode.style.top=parseInt(lastNode.style.top)+20+"px";
+                                bodyNode.style.left=lastNode.style.left;
+                        break;
+                    case "右":bodyNode.style.left=parseInt(lastNode.style.left)-20+"px";
+                                bodyNode.style.top=lastNode.style.top;
+                        break;
+                    case "下":bodyNode.style.top=parseInt(lastNode.style.top)-20+"px";
+                                bodyNode.style.left=lastNode.style.left;
+                        break;
+                }
+                bodyNode.value=lastNode.value
+                bodyNodes.push(bodyNode);
+                console.log(lastNode);
+            }
+            
+            
+        }
+        
+        var interval
+        var thisbtn;
+        sudu.children[0].onclick=function(){
+            interval=setInterval(move,100);
+
+            thisbtn=this;
+        }
+        sudu.children[1].onclick=function(){
+            interval=setInterval(move,500);
+            thisbtn=this;
+        }
+        sudu.children[2].onclick=function(){
+            interval=setInterval(move,1000);
+            thisbtn=this;
+        }
+        var keynum=0;
+        window.onkeydown = function (e) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+
+            if (e && e.keyCode == 37) {
+                tou.value = "左"
+
+                console.log('左')
+            }
+            if (e && e.keyCode == 38) {
+                tou.value = "上"
+                console.log('上')
+            }
+            if (e && e.keyCode == 39) {
+                tou.value = "右"
+                console.log('右')
+            }
+            if (e && e.keyCode == 40) {
+                tou.value = "下"
+                console.log('下')
+            }
+            if (e && e.keyCode == 27){
+                keynum++;
+                
+                if(keynum % 2 == 1){
+                  clearInterval(interval);
+                }else{
+                    console.log('开始')
+                   switch(thisbtn.innerHTML){
+                        case "快":interval=interval=setInterval(move,100);
+                            break;
+                        case "中":interval=interval=setInterval(move,500);
+                            break;
+                        case "慢":interval = interval=setInterval(move,1000);
+                   }
+                }
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

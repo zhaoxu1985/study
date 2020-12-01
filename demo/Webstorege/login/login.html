@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+       
+        td:nth-child(2){
+            display: inline-block;
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" >
+        <table border="1px" width='100px' spellcheck="1" >
+            <tr>
+                <td>账号</td>
+                <td id="">
+                    <input id="zh" type="text" name="" id="">
+                </td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td>
+                    <input id="pwd" type="text" name="" id="">
+                </td>
+            </tr>
+            <tr >
+                <td calspan='1'>
+                    
+
+                </td>
+                <!-- <td>1</td> -->
+            </tr >
+        </table>
+
+    </form>
+    <button  id="login_in" type="submit" style="display:block; width:100px"> 登录 </button>
+    <script>
+        var zh=document.getElementById('zh');
+        var pwd=document.getElementById('pwd');
+        var login=document.getElementById('login_in')
+        login.onclick=function(){
+        if(!zh.value=='' && !pwd.value==''){
+            sessionStorage['uname']=zh.value;
+            sessionStorage['pwd']=pwd.value;
+            
+            // login.style.href='../login/index.html'
+            location.href='../login/index.html'
+
+        }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-focus="uname">
+       <div>{{reverseString}}</div>
+    </div>
+ 
+    
+    <script src="../package/vue.js"></script>
+
+    <script>
+
+        Vue.directive('focus',{
+            inserted:function(el,binding){
+                // el.focus();
+                console.log(el,binding.value);
+            }
+        })
+
+         let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                uname:'邓小姐',
+                sex:'',
+                
+            },
+            //methods:定义函数方法
+            methods: {
+              
+            },
+            computed:{
+                reverseString:function(){
+                    return this.uname.split('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

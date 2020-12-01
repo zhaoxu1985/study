@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../package/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <li v-if="value.score==60" v-for="(value,index) in arrobj">{{`uname:${value.uname}-score:${value.score}`}}</li>
+        <ul>
+            <li  v-for="(value,keyName,i) in obj">{{value}}</li>
+        </ul>
+    </div>
+
+    <script>
+        let v = new Vue({
+            el: '#app',
+            data: {
+
+                obj: {
+                    uname: 'zx',
+                    score: 60,
+                },
+
+                arrobj: [{
+                        uname: 'zx',
+                        score: 60
+                    },
+                    {
+                        uname: 'xh',
+                        score: 70
+                    },
+                    {
+                        uname: 'zy',
+                        score: 80
+                    },
+                    {
+                        uname: 'yb',
+                        score: 60
+                    },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

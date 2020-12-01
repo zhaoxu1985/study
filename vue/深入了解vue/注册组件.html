@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+</head>
+
+<body>
+    <table ></table>
+    <div id="app">
+        <button-count></button-count>
+        <button-count></button-count>
+        <button-count></button-count>
+        <demo-demo></demo-demo>
+    </div>
+
+
+
+    <script>
+        //是实例的一个子组件 ，定义此组件之前必须有vue实例
+        Vue.component('ButtonCount', {
+            data:function () {  
+                return {
+                    count:0,
+                    data2:'你好，我在',
+                }
+            },
+            template: '<button @click="countJJ">点击了{{count}}次</button>',
+            methods: {
+                countJJ:function () {
+                    this.count++;
+                    console.log(this.data2);
+                }
+            }
+        })
+        Vue.component('DemoDemo',{
+            template:'<ButtonCount></ButtonCount>'
+        })
+        let v = new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/stylesheet/iteam.css">
+    <script src=" ../data/attributes.js"> </script> <script src="../data/data.js">
+    </script>
+</head>
+
+<body>
+    <h1>精灵图鉴</h1>
+    <div id="list" ></div>
+     <img src="../public/image/big/002.png" alt="">
+    </div>
+    <script>
+        let id = localStorage.getItem('id');
+        var list = document.getElementById('list');
+        list.innerHTML = `<div class="item" style='border:3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}'>
+        <div class="tit">            <div class="names" style='border:3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}'>${data[id].name}</div>
+            <div class="img">
+                <img src="${attributes[ data[id].attr[0]-1].pic.mpic}" alt="">
+            </div>
+            <div class="num" style='border:3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}'>${data[id].id}</div>
+        </div>
+        <div class="url" style="border:3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}">
+            <img src="${data[id].url}" alt="">
+        </div>
+        <div class="foot">
+            <div class="attrs" style="border: 3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}"">
+                <h5>属性</h5>
+                <div class="attr-part"style="border: 3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}" >
+                    
+                </div>
+            </div>
+            <div class="risk" style="border: 3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}">
+                <h5>捕获率</h5>
+                <p style="border: 3px solid ${attributes[data[id].attr[0]-1].color.bordercolor}">${data[id].capture}</p>
+            </div>
+        </div>`
+        var attrpart = document.getElementsByClassName('attr-part')[0];
+        attrpart.innerHTML = kk(data[id].attr);
+        
+
+        function kk(k) {
+            var dd = ''
+            for (var i = 0; i < k.length; i++) {
+                dd += `<div class="attr-item" >
+                        <div class="spic" style="background-color:${attributes[k[i]-1].color.tabcolor}">
+                            <img src="${attributes[k[i]-1].pic.spic}" alt="">
+                        </div>
+
+
+                        <div class="sname" style="background-color:${attributes[k[i]-1].color.textcolor}">
+                            <span>${attributes[k[i]-1].name}</span>
+                        </div>
+                    </div>`
+            }
+            return dd
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <span>用户名：</span>
+            <input type="text" v-model="uname">
+            
+            <div>
+                <span >性别:</span>
+                <input type="radio" value="男" v-model="gender">男
+                <input type="radio" value="女" v-model="gender">女
+            </div>
+
+            <div>
+                职业
+                <span>
+                    <select v-cloak v-model='hobby'>
+                        <option  value="0">--请选择--</option>
+                        <option  value="豆豆">豆豆</option>
+                        <option  value="吃">吃</option>
+                        <option  value="喝">喝</option>
+                        <option  value="拉">拉</option>
+                    </select>
+                </span>
+            </div>
+            <div>
+                爱好:
+                吃饭<input type="checkbox" value="0" v-model='arr'>
+                唱歌<input type="checkbox" value="1" v-model='arr'>
+              打代码<input type="checkbox" value="2" v-model='arr'>
+                嫖娼<input type="checkbox" value="3" v-model='arr'>
+            </div>
+            
+            <div><button @click.prevent="fun1()">提交</button></div>
+        </form>
+        
+
+    </div>
+ 
+    
+    <script src="../package/vue.js"></script>
+    <script>
+         let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                uname:'赵小姐',
+                sex:'',
+                gender:'',
+                hobby:'0',
+                arr:[],
+            },
+            //methods:定义函数方法
+            methods: {
+                fun1:function(value){
+                    // console.log(this.gender);
+                    console.log(this.arr);
+                },
+               
+            }
+        })
+    </script>
+</body>
+</html>

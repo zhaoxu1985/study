@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue基础/package/vue.js"></script>
+    <link rel="stylesheet" href="./package/bootstrap.css">
+    <link rel="stylesheet" href="./package/bootstrap.css.map">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box1_1 {
+            width: 500px;
+            height: 50px;
+            background-color: rgb(0, 195, 255);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input {
+            /* width: 5px; */
+        }
+
+        img {
+            width: 100px;
+        }
+
+        table {
+            width: 500px;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <test></test>
+        </div>
+    </div>
+
+    <script>
+        let thead = {
+            props: ['obj1'],
+            template: `
+                <div class="row text-lg-center row-no-gutters text-lg-center box1">
+                        <div class="box1_1 col-lg-12 ">
+                            {{obj1}}商品信息
+                        </div>
+                </div>
+            `,
+
+        }
+        let tbody = {
+            data: function () {
+                return {
+                    demo: 1
+                }
+            },
+            props: ['list', 'uname'],
+            template: `
+            <div class="row">
+                <div class="box2 col-lg-12 row-no-gutters">
+                    <table border="1px" class="table-striped">
+                        <tr :key='i' v-for='(value,i) in list'>
+                            <td><img :src="value.img" alt="">
+                                <span>
+                                    {{value.uname}}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <button @click='$emit("minus",value.uid)'>-</button>
+                                    <input  type="text" @blur='$emit("blurAddSum",{e:$event.target,uid:value.uid})' :value='value.num'>
+                                    <button @click='$emit("addNum",value.uid)'>+</button>
+                                </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" @click='$emit("delGoods",value.uid)'>删除</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            `,
+            methods: {
+
+            },
+            mounted: function () {
+                // console.log(this.list);
+            }
+        }
+        let bottom = {
+            data: function () {
+                return {
+                    sum: 0,
+                }
+            },
+            props: ['countNumData'],
+            template: `
+                <div class="row row-no-gutters box3">
+                    <div style="width:500px;border:1px solid black;">
+                        <div style="display: flex;justify-content:flex-end;">
+                            总价: <input type="text" :value='countNum'>
+                            <button>结算</button>
+                        </div>
+                    </div>
+                </div>
+            `,
+
+            computed: {
+                countNum: function () {
+                    let priceSum = 0;
+                    for (i in this.countNumData) {
+                        priceSum += this.countNumData[i].price * this.countNumData[i].num
+                    }
+                    return priceSum
+                }
+            },
+        }
+
+
+        Vue.component('test', {
+            data: function () {
+                return {
+                    uname: '赵旭',
+                    data: [{
+                            img: './package/img/expo.png',
+                            uid: 1,
+                            uname: '胖大海',
+                            num: 1,
+                            price: 1000,
+                        },
+                        {
+                            img: './package/img/expo.png',
+                            uid: 2,
+                            uname: '乌龙茶',
+                            num: 1,
+                            price: 1000,
+                        },
+                        {
+                            img: './package/img/expo.png',
+                            uid: 3,
+                            uname: '小干果',
+                            num: 1,
+                            price: 1000,
+                        },
+                        {
+                            img: './package/img/expo.png',
+                            uid: 4,
+                            uname: '菊花茶',
+                            num: 1,
+                            price: 1000,
+                        },
+                        {
+                            img: './package/img/expo.png',
+                            uid: 5,
+                            uname: '普洱茶',
+                            num: 1,
+                            price: 1000,
+                        }
+                    ]
+                }
+            },
+
+            template: `
+            <div>
+                <my-thead :obj1='uname'></my-thead>
+                <my-tbody @delGoods='delGoods($event)' @minus='del($event)' @addNum='addNums($event)' @blurAddSum='addNewNum($event)' :list='data' :uname='uname'></my-tbody>
+                <my-bottom  @blurAddSum='addNewNum' :countNumData='data'></my-bottom>
+            </div>
+            `,
+            components: {
+                'my-thead': thead,
+                'my-tbody': tbody,
+                'my-bottom': bottom
+            },
+            methods: {
+                addNewNum: function (obj) {
+                    let index = this.data.findIndex(function (value) {
+                        return value.uid == obj.uid;
+                    })
+                    this.data[index].num = obj.e.value
+                },
+                addNums: function (e) {
+                    let add = this.data.findIndex(function (value) {
+                        return value.uid==e
+                    })
+                    this.data[add].num++
+                },
+                del:function(e){
+                    let add = this.data.findIndex(function (value) {
+                        return value.uid==e
+                    })
+                    if(this.data[add].num>1){
+                        this.data[add].num--;
+                    }else{
+                        return
+                    }
+                   
+                },
+                delGoods:function(e){
+
+                   let index = this.data.findIndex(function(value){
+                       return value.uid==e
+                   })
+                   this.data.splice(index,1)
+                   console.log(index);
+                }
+            }
+
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            computed: {
+
+            },
+            watch: {
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>

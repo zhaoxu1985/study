@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <style>
+        #popUp {
+            border: 1px solid black;
+
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(116, 116, 116, 0.459);
+            position: fixed;
+            margin-top: -30px;
+            display: none;
+            
+        }
+
+        #popUp_center {
+            border-radius: 10px;
+            padding: 30px;
+            /* margin: 10px; */
+            width: 500px;
+            height: 500px;
+            background-color: rgb(106, 194, 245);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #popUp_center div {
+            margin: 10px;
+        }
+        #save{
+            background-color: #6de077;
+        }
+        #exit{
+            background-color: #e65147;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="popUp">
+        <div id="popUp_center">
+            
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">姓名</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">性别</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">年龄</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">爱好</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">电话</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">简介</span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div id="Sava_Exit">
+                <button id="save">确定</button>
+                <button id="exit">取消</button>
+            </div>
+        </div>
+
+    </div>
+
+    <section style="flex:9">
+        <!--for demo wrap-->
+        <h1>用户详情</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+
+                        <th>id</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>班级</th>
+                        <th>编辑
+
+                            <button style='background-color:#0e9c1a;margin-left: 150px;' id='btnNew'>增加</button>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    
+                </thead>
+                <tbody id="tbody">
+                    <button id="btnEdit">修改</button>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <script src="../package/jquery/jquery-3.4.1.min.js"></script>
+    <script src="home.js"></script>
+
+    <script>
+        let btnEdit = document.getElementById('btnEdit');
+        let popUp = document.getElementById('popUp');
+        let save = document.getElementById('save');
+        let exit = document.getElementById('exit');
+        exit.onclick=function(){
+            popUp.style.display = 'none';
+            return 
+        }
+
+        popUp.style.width = window.innerWidth + 'px'
+        popUp.style.height = window.innerHeight + 'px'
+        window.addEventListener('resize', function () {
+
+            popUp.style.width = window.innerWidth + 'px'
+            popUp.style.height = window.innerHeight + 'px'
+
+        })
+        btnEdit.onclick = function () {
+
+            popUp.style.display = 'block';
+            popUp.style.display = 'flex';
+
+
+
+        }
+    </script>
+</body>
+
+</html>

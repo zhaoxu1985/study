@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div ></div>
+    <button id="login">退出登录</button>
+
+    <script>
+        var div=document.getElementsByTagName('div')[0]
+        var login=document.getElementById('login'); 
+        
+        var zh=sessionStorage['uname']
+        var pwd= sessionStorage['pwd'];
+        
+       
+        function tz(value){
+            value.onclick=function(){
+                sessionStorage.clear();
+              location.href='../login/loginout.html'
+                
+            }
+            
+        }
+        tz(login);
+        
+        if(zh==undefined){
+            alert('请登录')
+            location.href='../login/login.html'
+        }else{
+            div.innerText='欢迎你：'+zh
+        }
+
+    </script>
+</body>
+</html>

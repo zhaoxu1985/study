@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model="c1" @click.left="fun1" @keyup.enter="fun2">
+        <input v-model="a" type="text" v-model="c1">
+        <div v-text="a"></div>
+    </div>
+ 
+    
+    <script src="../package/vue.js"></script>
+    <script>
+         let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                c1: 1,
+                a:'asd',
+            },
+            //methods:定义函数方法
+            methods: {
+                fun1:function(){
+                    return console.log('触发');
+                },
+                fun2:function(){
+                    return console.log(this.c1,this.a);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

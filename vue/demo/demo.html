@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> -->
+    <script src="../深入了解vue/package/vue.js"></script>
+    <style>
+
+    </style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='search'>
+        <ul   v-for='(value,i) in filterObj'>
+            <li>{{value.name}}</li>
+            <li v-for="(, index) in items" :key="index"></li>
+        </ul>
+       
+        <button>升序</button>
+        <button>降序</button>
+        <button>原顺序</button>
+        <!-- <button @click='fun1'>查看</button> -->
+
+    </div>
+    <script>
+        Vue.config.productionTip=false;
+        let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                search: '',
+                arr: [],
+                obj: [{
+                        name: '1',
+                        age: 1
+                    },
+                    {
+                        name: '2',
+                        age: 1
+                    },
+                    {
+                        name: '3',
+                        age: 1
+                    },
+                    {
+                        name: '4',
+                        age: 1
+                    }
+                ],
+            },
+            computed: {
+                filterObj: function () {
+                    let {
+                        obj,
+                        search
+                    } = this;
+                    let arr = obj.filter(value => value.name.indexOf(search) != -1)
+                    return arr
+                },
+   
+                    fullName: {
+                        // getter
+                        get: function () {
+                            return this.firstName + ' ' + this.lastName
+                        },
+                        // setter
+                        set: function (newValue) {
+                            var names = newValue.split(' ')
+                            this.firstName = names[0]
+                            this.lastName = names[names.length - 1]
+                        }
+                    }
+                
+            },
+            methods: {
+                fun1: function () {
+                    arr.push(
+                        this.obj
+                    )
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

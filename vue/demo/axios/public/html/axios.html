@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../package/vue.js"></script>
+    <script src="../package/axios/axios.js"></script>
+    <style>
+        body {
+            color: rgba(255, 0, 0, 0.2)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='fun1'>
+            提交
+        </button>
+        <img src="" alt="">
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+            fun1: function () {
+                axios.interceptors.request.use(config => {
+                    // Do something before request is sent
+                    console.log(config);
+                    config.headers['mytoken'] = '111'
+                    return config;
+                }, error => {
+                    // Do something with request error
+                    return Promise.reject(error);
+                });
+
+                axios.interceptors.response.use(res => {
+                    // Do something before request is sent
+                    return res.data;
+                }, error => {
+                    // Do something with request error
+                    return Promise.reject(error);
+                });
+
+                axios.post('/home/aaa', {
+                    uname: '1',
+                    upwd: 123
+                }).then(function (value) {
+                    console.log(value);
+                })
+
+            },
+
+        },
+    })
+
+    
+</script>
+
+</html>

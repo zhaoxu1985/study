@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+    <style>
+        body {
+            position: relative;
+        }
+
+        #d {
+            position: absolute;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li :key='i' v-for='(value,i) in obj'>{{value.uname}}</li>
+        </ul>
+        <test :data1='msg' :data2='size' @add-obj='add($event)' @add-jj='funadd'></test>
+    </div>
+    <script>
+        //是实例的一个子组件 ，定义此组件之前必须有vue实例
+        Vue.component('test', {
+            data: function () {
+                return {
+                    selfData: '自身属性',
+                    obj1:{
+                        uname:'张晓航',
+                        uage:1
+                    }
+                }
+            },
+            props: ['data1', 'data2', 'data3'],
+            template: `
+                    <div>
+                        <button @click='$emit("add-obj",obj1)'>增加一个</button>
+                        <p>{{data2}}</p>
+                        <button @click='$emit("add-jj")'>增加</button>
+                    </div>
+                `,
+            methods:{
+                fun1:function(){
+                    this.data2++
+                }
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '赵旭',
+                size: 20,
+                time: '',
+                obj: [
+                {
+                    uname: 'zz',
+                    upwd: 123
+                },
+                {
+                    uname: 'dd',
+                    upwd: 123
+                },
+                {
+                    uname: 'hh',
+                    upwd: 123
+                }
+            ]
+
+
+            },
+            methods: {
+                fun1: function () {
+                    console.log('我太难了');
+                },
+                add:function(val){
+                    console.log(this.size);
+                    this.obj.push(val)
+                },
+                funadd:function(){
+                    this.size++
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

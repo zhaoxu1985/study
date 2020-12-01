@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 10px auto;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        th:nth-child(1) {
+            width: 100px;
+        }
+
+        th:nth-child(2) {
+            width: 120px;
+        }
+
+        th:nth-child(3) {
+            width: 180px;
+        }
+
+        th:nth-child(4) {
+            width: 80px;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="../public/stylesheet/icon.css">
+    <script src="../data/data.js"></script>
+</head>
+
+<body>
+    <h1>小精灵列表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>图标</th>
+                <th>编号</th>
+                <th>名称</th>
+                <th>查看</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>
+                    <div class="sprite-icon sprite-icon-001"></div>
+                </td>
+                <td>001</td>
+                <td>妙蛙种子</td>
+                <td><a href="">查看</a></td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+        var tbody = document.querySelector('tbody');
+
+
+        for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement('tr');
+
+            tbody.appendChild(tr);
+            tr.innerHTML = `
+                <td>
+                    <div class="sprite-icon sprite-icon-${data[i].id}"></div>
+                </td>
+                <td>${data[i].id}</td>
+                <td>${data[i].name}</td>
+                <td><a href="data.html">查看</a></td>`;
+
+
+        }
+
+        let a = document.querySelectorAll('a');
+        for (let i = 0; i < data.length; i++) {
+            a[i].onclick = function () {
+                localStorage.setItem('id',i)
+            }
+        }
+    </script>
+</body>
+
+</html>

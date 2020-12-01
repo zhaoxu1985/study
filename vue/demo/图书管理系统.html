@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> -->
+    <script src="./package/vue.js"></script>
+    <style>
+        tr {
+            height: 50px;
+        }
+
+        #ttr {
+            height: 30px;
+        }
+
+        td {
+            text-align: center;
+            height: 30px;
+            width: 30px;
+        }
+
+        table {
+            width: 800px;
+        }
+
+        input {
+            border: 2px black solid;
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+
+
+        <span>
+            编号:<input id="inputId" type="text" v-model='addBookId'>
+            书名:<input type="text" v-model='addBookName'>
+            <button @click.stop='addBookFun'>提交 | 修改</button>
+            <!-- 搜索:<input type="text" v-model='serchdata' @input="search"> -->
+        </span>
+        <table border="1" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr id="ttr">
+                    <th>编号</th>
+                    <th>书名</th>
+                    <th>日期</th>
+                    <th>简介</th>
+                    <th>编辑</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr v-if="newarr.length==0" v-for="(value,i) in arrBook">
+                    <td>{{value.id}}</td>
+                    <td>{{value.bookName}}</td>
+                    <td>{{value.data}}</td>
+                    <td>{{value.show}}</td>
+                    <td>
+                        <button @click='edit(value,i)'>修改</button>
+                        <span> | </span>
+                        <button @click='del1(i)'>删除</button>
+                    </td>
+                </tr>
+                
+                <tr v-if="newarr.length>=0" v-for="(value,i) in newarr">
+                    <td>{{value.id}}</td>
+                    <td>{{value.bookName}}</td>
+                    <td>{{value.data}}</td>
+                    <td>{{value.show}}</td>
+                    <td>
+                        <button @click='edit(value,i)'>修改</button>
+                        <span> | </span>
+                        <button @click='del(value.id,$event)'>删除</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                newarr: [],
+                serchdata: '',
+                addBookId: '',
+                addBookName: '',
+                IdInput: document.getElementById('inputId'),
+                flag: 'true',
+                arrBook: [{
+                        id: '1',
+                        bookName: '我爱你',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    
+                    {
+                        id: '2',
+                        bookName: '我不爱你',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '3',
+                        bookName: '我很爱你',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '4',
+                        bookName: '我杀了你',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '5',
+                        bookName: '111',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '6',
+                        bookName: '23',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '7',
+                        bookName: '45',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '8',
+                        bookName: '13',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '9',
+                        bookName: '551s',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '10',
+                        bookName: '455',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '11',
+                        bookName: 'd2',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    },
+                    {
+                        id: '12',
+                        bookName: 'qwe',
+                        data: '11-4',
+                        show: '爱你***啊爱'
+                    }
+                ],
+            },
+            //methods:定义函数方法
+            methods: {
+                search: function () {
+                    let that = this;
+                    // console.log([value]);
+                    this.newarr = (this.arrBook.filter(function (value) {
+                        if (value.id.includes(that.serchdata) ||
+                            value.bookName.includes(that.serchdata) ||
+                            value.data.includes(that.serchdata) ||
+                            value.show.includes(that.serchdata)) {
+                            return value
+                        }
+                    }))
+                },
+                addBookFun: function () {
+                    if (this.flag == 'false') {
+                        //编辑
+                        var that = this;
+                        this.flag = 'false';
+                        document.getElementById('inputId').removeAttribute('disabled')
+
+                        var afterId = this.arrBook.filter(function (value, i) {
+                            console.log(that.addBookId);
+                            return value.id == that.addBookId;
+                        })
+                        let ii = Number(this.addBookId);
+                        console.log(ii);
+                        this.arrBook[ii - 1].bookName = this.addBookName;
+                        this.addBookId = ''
+                        this.addBookName = ''
+                    } else {
+                        //添加
+                        // console.log(this.addBookId);
+                        var obj = {};
+                        obj.id = this.addBookId;
+                        obj.bookName = this.addBookName;
+                        this.arrBook.push(obj)
+                        this.addBookId = ''
+                        this.addBookName = ''
+                    }
+                },
+                edit: function (value, i) {
+                    document.getElementById('inputId').disabled = 'disabled'
+                    this.addBookId = value.id
+                    this.addBookName = value.bookName
+                    this.flag = 'false'
+                },
+                del1: function (i) {
+                    this.arrBook.splice(i, 1)
+                },
+                del: function (id,e) {
+                    let str = Number(e.target.parentNode.parentNode.children[0].innerText);
+                    e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode)
+                    let newArr= this.arrBook.findIndex(function (value) {
+                        return value.id == str
+                    })
+                    this.arrBook.splice(newArr,1)
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

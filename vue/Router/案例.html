@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue基础/package/vue.js"></script>
+    <script src="../vue基础/package/vue-router.js"></script>
+    <style>
+        .box {
+            width: 100%;
+            height: 100%;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .box2 {
+            width: 100%;
+            height: 100%;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: nowrap;
+
+        }
+
+        .header {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .left {
+            width: 30%;
+            border: 1px solid black;
+            height: 500px;
+        }
+
+        .right {
+            width: 70%;
+            height: 500px;
+            border: 1px solid black;
+        }
+
+        p {
+            width: 100%;
+            background-color: rgb(204, 113, 113);
+            margin: 0px;
+            height: 50px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="app">
+
+        <user></user>
+     
+    </div>
+
+
+    <script>
+        // let users = {
+        //     template:`
+        //         <div>
+        //             <button>你好</button>
+        //         </div>
+        //     `,
+
+        // }
+        let left = {
+            template: `
+                <div>
+                    个人用户
+                </div>
+            `
+        }
+        let right = {
+                data: function () {
+                    return {
+                        obj: [{
+                                id: 1,
+                                name: 'bbb'
+                            },
+                            {
+                                id: 2,
+                                name: 'ccc'
+                            },
+                            {
+                                id: 3,
+                                name: 'ddd'
+                            },
+                            {
+                                id: 4,
+                                name: 'eee'
+                            }
+                        ]
+                    }
+                },
+                template: `
+            <div>
+                <table cellspecing='1' border="1">
+          
+                    <thead>
+                         <th>id</th>
+                        <th>name</th>
+                        <th>详情</th>
+                    </thead>
+                    <tbody v-for='item in obj' :key='item.id'>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <button @click='goDetails(item.id)'>
+                            
+                            详情
+                            
+                        </button>
+                    </tbody>
+         
+                </table>
+      
+            </div>
+            `,
+                methods: {
+                    goDetails: function (id) {
+                        console.log(id);
+                        this.$router.push('/details/'+id)
+                    }
+                },
+            }
+
+            Vue.component('user', {
+                template: `
+                <div>
+                    <div class="box">
+            <!-- 头部 -->
+                <div class="header">
+                    后台管理系统
+                </div>
+       
+                </div>
+                <div class="box2">
+                <div class="left">
+                    <p id='me' @click='me'>
+                        <router-link to='/left'>个人用户</router-link>
+                    </p>
+                    <p id='tabls'>
+                        <router-link to='/right'>列表详情</router-link>
+                    </p>
+                </div>
+                <div class="right">
+                    <router-view>
+                   
+                    </router-view>
+
+                </div>
+                </div>
+                </div>
+            `,
+                components: {
+                    right: right
+                },
+                methods: {
+                    me: function () {
+
+                    },
+                    tables: function () {
+
+                    }
+                }
+            })
+        let details = {
+            props:['id'],
+            template:`
+                <div>
+                    {{id}}
+                    <button @click='back'>后退</button>
+                </div>
+            `,
+            methods: {
+                back:function(){
+                    this.$router.go(-1)
+                }
+            },
+        }
+        let router = new VueRouter({
+            routes: [{
+                    path: '/',
+                    component: left,
+                },
+                {
+                    path: '/left',
+                    component: left
+                },
+                {
+                    path: '/right',
+                    component: right,
+                },
+                {
+                    path:'/details/:id',
+                    component:details,
+                    props:true
+                }
+            ]
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

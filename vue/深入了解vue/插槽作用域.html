@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+    <style>
+        .aa{
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <test :data='arr'>
+
+            <template slot-scope='test'>    
+                <li>{{test.info}}</li>
+            </template>
+
+        </test>
+    </div>
+
+    <script>
+        //是实例的一个子组件 ，定义此组件之前必须有vue实例
+        Vue.component('test', {
+            data: function () {
+                return {
+                    msg: 0,
+                }
+            },
+            props:['data'],
+            template: `
+                <div>
+                    <ul>
+                        <li :key='i' v-for='(value,) in data'>
+                            <slot :info='value'>{{value}}</slot>
+                        </li>
+                    </ul>
+                </div>
+            `,
+        })
+        let v = new Vue({
+            el: '#app',
+            data:{
+                arr:['aaa','bbb','ccc']
+            },
+            
+         
+        })
+    </script>
+</body>
+
+</html>

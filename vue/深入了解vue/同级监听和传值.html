@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+</head>
+
+<body>
+ 
+    <div id="app">
+        <button @click='delEvent'>销毁</button>
+        <tome></tome>
+        <jarry></jarry>
+    </div>
+
+    <script>
+        //是实例的一个子组件 ，定义此组件之前必须有vue实例
+        var eventHub = new Vue()
+        Vue.component('tome', {
+            data:function () {  
+                return {
+                    count:0,
+                }
+            },
+            template: `
+            <div>
+                <div>tome:{{count}}</div>
+                <button @click="countJJ">点击</button>
+                <tbody> 
+                    <slot name='tbody'>
+                        
+                    </slot>
+                </tbody>
+                <slot></slot>
+            </div> 
+            `,
+            methods: {
+                countJJ:function () {
+                    eventHub.$emit('jarry',2)
+                }
+            },
+            mounted:function(){
+                eventHub.$on('tome',(val)=>{
+                    this.count+=val
+                })
+            }
+        })
+        Vue.component('jarry', {
+            data:function () {  
+                return {
+                    count:0,
+                }
+            },
+            template: `
+            <div>
+                <div>jarry:{{count}}</div>
+                <button @click="countJJ">点击</button>
+            </div> 
+            `,
+            methods: {
+                countJJ:function () {
+                    eventHub.$emit('tome',1)
+                }
+            },
+            mounted:function(){
+                eventHub.$on('jarry',(val)=>{
+                    this.count+=val
+                })
+            }
+        })
+
+        
+        let v = new Vue({
+            el: '#app',
+            methods:{
+                delEvent:function(){
+                    eventHub.$off('tome')
+                    eventHub.$off('jarry')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

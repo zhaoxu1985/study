@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> 
+<body>
+    <!-- <input type="text"> -->
+    <ul>
+
+    </ul>
+    <script>
+         //set元素不能存在重复的值，可以用作去重;
+
+         let set = new Set();
+        let arr=[1,23,'s',5,2,11,25,2];
+        // set.add([1,23,'s',5,2,11,25,2]) 
+        
+        arr.forEach((value,key,back) => {
+            set.add(value)
+        });
+        // console.log(arr)
+        //删除某个元素；
+        set.delete(45)
+        //查看有没有这个元素  has方法
+        console.log(set.has(2))
+        //清楚数组元素
+        // set.clear();
+        console.log(set)
+
+        // for (const value of set) {
+        //     arr.push(value);
+        // }
+        
+        // console.log(set)
+        //--------------------------------
+
+
+
+        // let ul= document.querySelector('ul');
+        // let ipt=document.querySelector('input');
+    
+        // let obj={
+        //     date : new Set(),
+        //     set keywords(word){
+        //         this.date.add(word);
+        //     },
+        //     show (){
+        //         console.log('asd')
+        //     }
+            
+        // }
+        // console.log(obj.keywords()
+    
+        let uname = 'zx';
+        let scores=[
+            {subject:'js',prices:99},
+            {subject:'php',prices:76}
+        ]
+        var newScores=scores.filter((sum,key)=>{
+            sum+key
+        })
+        console.log(object)
+        function zx(param) { 
+           return `hi！${param}`
+        }
+        let arry = [5,5,5,5];
+        let newarr=scores.reduce((sum,value)=>{
+               return sum+value.prices/2
+            },0)
+        console.log(newarr);
+        
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .pagi {
+      width: 800px;
+      height: 40px;
+      border: 1px solid hotpink;
+      margin: 30px auto;
+    }
+
+    table {
+      width: 800px;
+      margin: 10px auto;
+      border: 2px solid #333;
+      text-align: center;
+    }
+
+    tbody > tr {
+      cursor: pointer;
+    }
+
+    tbody > tr:nth-child(even) {
+      background-color: pink;
+    }
+
+    tbody > tr:nth-child(odd) {
+      background-color: skyblue;
+    }
+
+    tbody > tr:hover {
+      background-color: #bbb;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="pagi" id="pagi"></div>
+
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>班级</th>
+        <th>成绩</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>张三</td>
+        <td>18</td>
+        <td>男</td>
+        <td>1919</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>张三</td>
+        <td>18</td>
+        <td>男</td>
+        <td>1919</td>
+        <td>100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="./js/pagination.js"></script>
+  <script src="./js/data.js"></script>
+  <script>
+    /*
+      [
+        {},
+        {}
+      ]
+
+      准备一个数组
+
+    */
+
+    // console.log(arr)
+
+    /*
+      数组由 2000+ 条数据
+        当 n === 1 的时候，渲染第一页 把数组中前十个拿出来渲染 索引 0 ~ 9
+        当 n === 2 的时候，渲染第二页 索引 10 ~ 19
+        当 n === 3 的时候，渲染第三页 索引 20 ~ 29
+
+        n === 1 (n - 1) * 10   ~   n * 10 - 1   0 ~ 9
+        n === 2 (n - 1) * 10   ~   n * 10 - 1   10 ~ 19
+
+        分页公式： （当前页 - 1） * 一页显示多少条 ~ 当前页 * 一页显示多少条 - 1
+    */
+
+    const tBody = document.querySelector('tbody')
+    new Pagination('#pagi', {
+      pagesize: 20,
+      total: arr.length,
+      first: '走你',
+      change (n) {
+        // console.log('我要渲染第 ' + n + ' 页数据')
+        // 从大数组里面向外截取出一个小数组来进行渲染
+        // const bindArr = arr.slice('开始索引', '结束索引') // 包前不包后
+        const bindArr = arr.slice((n - 1) * 20, n * 20)
+        // console.log(bindArr)
+
+        // 用数据去渲染页面
+        let str = ''
+        bindArr.forEach((item, index) => {
+          // item 是 bindArr 里面的每一个，就一个一个的对象
+          // console.log(item)
+          // 一个对象就是一个 tr
+          str += `
+            <tr>
+              <td>${ index + 1 }</td>
+              <td>${ item.id }</td>
+              <td>${ item.name }</td>
+              <td>${ item.age }</td>
+              <td>${ item.gender }</td>
+              <td>${ item.class }</td>
+              <td>${ item.score }</td>
+            </tr>
+          `
+        })
+
+        tBody.innerHTML = str
+      }
+    })
+
+  </script>
+</body>
+</html>

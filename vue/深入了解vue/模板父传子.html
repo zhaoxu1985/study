@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <test :data='arr'>
+            <div slot='a'>丢你</div>
+
+            <template v-slot:t="dataProps">
+                {{dataProps.obj.id}}
+            </template>
+            
+            <div slot='b'>丢你</div>
+        </test>
+
+    </div>
+
+    <script>
+        Vue.component('test',{
+            data:function(){
+                return{
+                    demoData:1
+                }
+            },
+            props:['data'],
+            template:`
+                <div>
+                    <slot name='a'></slot>
+                    <div >
+                        <ul >
+                            <li  :key='i' v-for='(value,i) in data'>
+                                <slot name='t' :obj='value'>{{value}}</slot>
+                            </li>   
+                        </ul>
+                    </div>
+                   <slot name='b'>
+
+                    </slot>
+                </div>
+                
+             `
+        })
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                arr:[
+                    {
+                        uname:'zz',
+                        id:1
+                    },
+                    {
+                        uname:'bb',
+                        id:2
+                    },
+                    {
+                        uname:'cc',
+                        id:3
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

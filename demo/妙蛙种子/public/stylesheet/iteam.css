@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    text-align: center;
+  }
+  li {
+    list-style: none;
+  }
+  .title {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .list {
+    display: flex;
+    width: 1300px;
+    margin: 0 auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .item {
+    width: 400px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    
+    margin: 0 auto;
+  }
+  .item .tit {
+    height: 80px;
+    padding:10px 6px 0 6px;
+  }
+  .item .tit > div {
+    line-height: 50px;
+    padding: 10px 20px;
+    float: left;
+    border-radius: 10px;
+  } 
+  .item .tit .names {
+    width: 180px;
+    margin-right: 20px;
+    background-color: #fff;
+    /* border-color: 2px solid black; */
+  }
+  .item .tit .num {
+    float: right;
+    background-color: #fff;
+  }
+  .item .tit .img {
+    border-width: 0;
+  }
+  .item .tit .img img {
+    display: block;
+    margin-top: 15px;
+  }
+  .item .url {
+    width: 304px;
+    border: 2px solid;
+    margin: 30px auto;
+    border-radius: 10px;
+    padding: 40px;
+    background-color: #fff;
+  }
+  .item .url img {
+    display: block;
+    width: 100%;
+  }
+  .item .foot {
+    display: flex;
+    justify-content:space-around;
+  }
+  .item .foot > div {
+    width: 180px;
+    border: 2px solid;
+    border-radius: 5px;
+  }
+  .item .foot > div h5 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .item .foot .risk p,.item .foot .attr-part{
+   width: 92%;
+   margin: 10px auto;
+   border: 2px solid;
+   border-radius: 5px;
+   background-color: #fff;
+   text-align: center;
+   height: 30px;
+   line-height: 30px;
+  }
+  
+  .item .foot .attr-part {
+    display: flex;
+    justify-content:space-around;
+  }
+  .item .foot .attr-part .attr-item{
+    width: 78px;
+    height: 24px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 3px;
+  }
+  .item .foot .attr-part .attr-item > div {
+    float: left;
+    height: 20px;
+    padding: 2px;
+  
+  }
+  .item .foot .attr-part .attr-item .spic {
+    width: 20px;
+    clip-path: polygon(0 0, 100% 0, 86% 100%, 0% 100%);
+  }
+  .item .foot .attr-part .attr-item .spic img {
+    display: block;
+    width: 100%;
+  }
+  .item .foot .attr-part .attr-item .sname {
+    width: 50px;
+    font-size: 13px;
+    line-height: 20px;
+    color: white;
+  }

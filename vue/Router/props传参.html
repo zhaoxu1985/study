@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue基础/package/vue.js"></script>
+    <script src="../vue基础/package/vue-router.js"></script>
+</head>
+
+<body>
+
+
+
+    <div id="app">
+        <!-- 2.添加路由链接 -->
+        <router-link to='/user/1'>1</router-link>
+        <router-link to='/user/2'>2</router-link>
+        <router-link to='/user/3'>3</router-link>
+        <!-- 3.路由占位符 -->
+        <router-view></router-view>
+    </div>
+
+
+    <script>
+       
+        let tab= {
+            props:['id']
+            ,
+            template:`
+              <div>
+                  我是tab{{id}}
+              </div>
+            `
+        }
+        // -------------------------------------------------
+        let router = new VueRouter({
+            //routes 路由规则数组
+            routes: [
+                //每个路由都是一个配置对象,其中至少包含path和component两个属性
+                //path:当前路由规则匹配的hash地址（路由地址）
+                //component:当前路由规则对应要展示的组件
+                {
+                    path:'/user/:id',
+                    component:tab,
+                    props:true,
+                }
+            ]
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            router,
+
+        })
+    </script>
+</body>
+
+</html>

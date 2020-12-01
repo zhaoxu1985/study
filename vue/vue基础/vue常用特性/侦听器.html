@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.lazy="uname" @blur="simulationServer">
+        <span>{{prompt}}</span>
+    </div>
+
+
+    <script src="../package/vue.js"></script>
+
+    <script>
+        let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                msg: {
+                    color: 'red'
+                },
+                uname: '',
+                sex: '17',
+                prompt: '',
+            },
+            //methods:定义函数方法
+            methods: {
+                simulationServer: function (val) {
+                    // console.log(this.uname);
+                    let clThis = this;
+                    setTimeout(function () {
+                        if(val=='zhaoxu'){
+                            clThis.prompt='用户已存在，请换一个'
+                        }else{
+                            clThis.prompt='可用!'
+                        }
+                    },2000)
+                },
+            },
+            //watch：监听data中的属性，发生改变则触发响应的方法，
+            // 注意：方法名要与属性名一致（必须）;
+            watch: {
+                uname: function (value) {
+                    console.log(value);
+                    this.simulationServer(this.uname)
+                    this.prompt = '正在验证...'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

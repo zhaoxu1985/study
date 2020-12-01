@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .pagi {
+      width: 800px;
+      height: 40px;
+      border: 1px solid #333;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pagi" id="pagi"></div>
+
+  <script src="./js/pagination.js"></script>
+  <script>
+    /*
+      结构
+        首页 上一页  1 2 3 4 5 6 7 8 9 下一页 末页 文本框 按钮
+        中间列表位置根据一共多少页来决定
+          1 2 3 4 5 6 7 8 9
+          1 2 3 4 5 ... 99 100
+
+      一个分页器你在使用的时候，你想做什么
+        几个大按钮的文字最好由我来决定
+        一共由多少条数据由我决定
+        一页展示多少条数据由我决定
+        当前页是哪一页也该由我决定
+
+      由使用者决定的东西就应该以参数的形式传递
+
+      以对象的形式传递参数
+      {
+        pagenum: 1,
+        pagesize: 10,
+        total: 1000,
+        first: '首页',
+        ...
+      }
+      因为一个对象传递不好设置默认值
+      {
+        pageInfo: {
+          pagenum: 1,
+          pagezise: 10,
+          total: 1000
+        },
+        textInfo: {
+          first: '首页',
+          prev: '上一页',
+          next: '下一页',
+          last: '末页'
+        }
+      }
+    */
+
+    // const paginationInfo = {
+    //   pageInfo: {
+    //     pagenum: 1,
+    //     pagezise: 10,
+    //     total: 1000
+    //   },
+    //   textInfo: {
+    //     first: '首页',
+    //     prev: '上一页',
+    //     next: '下一页',
+    //     last: '末页'
+    //   }
+    // }
+
+
+    // 一些选项一参数的形式传递
+    // 一个对象的形式传递参数
+    const p1 = new Pagination('#pagi', {
+      pagesize: 13,
+      total: 2019,
+      next: '下一页',
+      last: '最后一页',
+      change: function (n) {
+        console.log('我要渲染第 ' + n + ' 页的数据')
+      }
+    })
+    console.log(p1)
+    p1.init()
+    // p1.computedTotalPage()
+    // p1.createEle()
+
+
+    document.addEventListener('selectstart', e => {
+      e.preventDefault()
+    })
+
+
+    /*
+      我是使用 9 个当作节点
+        9 页以下直接渲染
+        9 页以上出现 ...
+          当前页面小于 5 的时候 1 2 3 4 5 ... 倒数第二 倒数第一
+          当前页面等于 5 的时候 1 2 3 4 5 6 7 ... 倒数第二 倒数第一
+          当前页面大于 5 小于 倒数第五页 的时候  1 2 ... 当前页前二 当前页前一 当前页 当前页后一 当前页后二 ... 倒数第二 倒数第一
+          当前页面等于 倒数第五页的时候 1 2 ... 当前页前二 当前页前一 当前页 后面的所有
+          当前页面大于 倒数第五页的时候 1 2 ... 后五个
+
+    */
+  </script>
+</body>
+</html>

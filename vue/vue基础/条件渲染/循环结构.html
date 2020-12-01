@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../package/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="data in arr">{{data.uname}}</li>
+            <li :key="index" v-for="(data,index) in arr">{{`${data.uname}--${data.usex}`}}</li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.config.keyCodes.a = 65;
+        let v = new Vue({
+            el: '#app',
+            data: {
+                arr: [{
+                    uname: 'zx',
+                    usex: '18'
+                }, {
+                    uname: 'xh',
+                    usex: '20'
+                }, {
+                    uname: 'ww',
+                    usex: '50'
+                }]
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

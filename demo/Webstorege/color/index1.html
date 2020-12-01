@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* blue{bg:#ddf  color #33a}
+        pink{bg:#fdf  color #a3a}
+         */
+    </style>
+</head>
+<body>
+    <select name="" id="slc">
+        <option value="">请选择</option>
+        <option value="red">红</option>
+        <option value="green">绿</option>
+        <option value="blue">蓝</option>
+    </select>
+    
+    <script>
+        var body=document.getElementsByTagName('body')[0]
+        var slc=document.getElementById('slc');
+
+        // body.style.backgroundColor=slc.value
+        
+        var getColor=localStorage['color']
+
+        if(getColor){
+            body.style.backgroundColor=getColor;
+            console.log('有了')
+            slc.value=getColor
+            
+        }else{
+           
+            localStorage['color']=slc.value
+            body.style.backgroundColor=getColor
+            
+        }
+            slc.onchange=function(){
+                
+                
+                localStorage['color']=slc.value
+                body.style.backgroundColor=localStorage['color'];
+                // window.location.reload();
+                // console.log(getColor)
+                body
+                
+            } 
+
+
+        
+       
+        
+        
+        // localStorage['color']=slc.value
+        // body.style.backgroundColor=slc.value
+    </script>
+</body>
+</html>

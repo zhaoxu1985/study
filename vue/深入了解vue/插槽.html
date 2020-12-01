@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./package/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <test>
+            <template slot='span'>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+            </template>
+            <p>匿名</p>
+            <p slot='span1'>222</p>
+        </test>
+    </div>
+
+    <script>
+        //是实例的一个子组件 ，定义此组件之前必须有vue实例
+        Vue.component('test', {
+            data: function () {
+                return {
+                    msg: 0,
+                }
+            },
+            template: `
+                <div>
+                    <span>
+                        <slot name='span'></slot>
+                    </span>
+                    <slot></slot>
+                    <span>
+                        <slot name='span1'></slot>
+                    </span>
+                </div>
+            `,
+
+        })
+
+
+        let v = new Vue({
+            el: '#app',
+            methods: {
+                delEvent: function () {
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

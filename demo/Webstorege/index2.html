@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" >获取</button>
+    <button id="btn2" >清除</button>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2')
+        var value = sessionStorage.getItem('uname');
+        btn.onclick=function(){
+            console.log(value);
+            
+        }
+        btn2.onclick=function (){
+            sessionStorage.removeItem('uname')
+            console.log(sessionStorage.removeItem('uname'))
+            value=null
+        }
+        // sessionStorage.removeItem('uname')
+        
+    </script>
+</body>
+</html>
