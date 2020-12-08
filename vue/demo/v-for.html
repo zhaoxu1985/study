@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> -->
+    <script src="../深入了解vue/package/vue.js"></script>
+    <style>
+
+    </style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="(item, index) in obj" :key="index">
+            <tr>
+                <td>{{item.price}}</td>
+                <td><input type="text" @input='fun1(item.id)' v-model.number='item.num'></td>
+                <td>{{item.totalPrice}}</td>
+            </tr>
+        </div>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+            //data:存放属性和属性值
+            data: {
+                search: '',
+
+                obj: [{
+                        id: '1',
+                        price: 10,
+                        num: 0,
+                        totalPrice: 0
+                    },
+                    {
+                        id: '2',
+                        price: 20,
+                        num: 0,
+                        totalPrice: 0
+                    },
+                    {
+                        id: '3',
+                        price: 30,
+                        num: 0,
+                        totalPrice: 0
+                    }
+                ],
+            },
+            methods: {
+                fun1(ids) {
+                    let d  = this.obj.filter(value=>{
+                        if(value.id.includes('3')){
+                            return value
+                        }
+                    })
+                    console.log(d);
+                }
+            },
+         
+
+        })
+    </script>
+
+</body>
+
+</html>
