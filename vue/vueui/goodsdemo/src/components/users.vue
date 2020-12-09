@@ -63,6 +63,7 @@
                   type="primary"
                   icon="el-icon-edit"
                   size="mini"
+                   @click='showEdit(operation.row.id)'
                 ></el-button>
               </el-tooltip>
 
@@ -77,6 +78,7 @@
                   type="danger"
                   icon="el-icon-delete"
                   size="mini"
+                  @click="(deleteUser(operation.row.id))"
                 ></el-button>
               </el-tooltip>
 
@@ -104,7 +106,7 @@
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page="userInfo.pagenum"
-          :page-sizes="[1, 2, 3, 4]"
+          :page-sizes="[5, 10, 15, 20]"
           :page-size="userInfo.pagesize"
           layout="total, sizes, prev, pager, next, jumper"
           :total="total"
@@ -115,29 +117,56 @@
       <el-dialog
         title="添加成员"
         :visible.sync="addDialogVisible"
-        width="50%">
+        width="50%"
+        @close="usercancel('addUserRef')"
+         :before-close="handleClose"
+        >
 
-      <el-form :model="addUsersFrom" :rules="addUsersRules" ref="addUserRef" label-width="80px">
-         <el-form-item label="用户名" prop="uname">
-          <el-input v-model="addUsersFrom.uname"></el-input>
-         </el-form-item>
-         <el-form-item label="密码" prop="upwd">
-          <el-input type="password" v-model="addUsersFrom.upwd"></el-input>
-         </el-form-item>
-         <el-form-item label="邮箱" prop="email">
-          <el-input v-model="addUsersFrom.email"></el-input>
-         </el-form-item>
-         <el-form-item label="手机" prop="mobile">
-          <el-input v-model="addUsersFrom.mobile"></el-input>
-         </el-form-item>
-      </el-form>
-      
-
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="addDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="yesAddUser('addUserRef')">确 定</el-button>
-        </span>
-</el-dialog>
+          <el-form :model="addUsersFrom" :rules="addUsersRules" ref="addUserRef" label-width="80px">
+              <el-form-item label="用户名" prop="username">
+                <el-input v-model="addUsersFrom.username"></el-input>
+              </el-form-item>
+              <el-form-item label="密码" prop="password">
+                <el-input type="password" v-model="addUsersFrom.password"></el-input>
+              </el-form-item>
+              <el-form-item label="邮箱" prop="email">
+                <el-input v-model="addUsersFrom.email"></el-input>
+              </el-form-item>
+              <el-form-item label="手机" prop="mobile">
+                <el-input v-model="addUsersFrom.mobile"></el-input>
+              </el-form-item>
+          </el-form>
+          <div>
+            <span slot="footer" class="dialog-footer">
+              <el-button @click="addDialogVisible=false">取消</el-button>
+              <el-button type="primary" @click="yesAddUser('addUserRef')">确 定</el-button>
+            </span>
+          </div>
+      </el-dialog>
+  <!-- 编辑对话框 -->
+        <el-dialog
+          title="编辑用户"
+          :visible.sync="eidtUsersSync"
+          width="50%"
+          >
+          <span>
+            <el-form :model="editForm" ref='editUserRefs' :rules="editUsersRules">
+              <el-form-item label="用户名" prop="username">
+                <el-input disabled v-model="editForm.username"></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱" prop="email">
+                <el-input type="email" v-model='editForm.email'></el-input>
+            </el-form-item>
+            <el-form-item label="手机" prop="mobile">
+                <el-input v-model="editForm.mobile"></el-input>
+            </el-form-item>
+            </el-form>
+          </span>
+          <span slot="footer">
+            <el-button @click="editFormClose('editUserRefs')">取 消</el-button>
+            <el-button type="primary" @click="editUserInfo('editUserRefs')">确 定</el-button>
+          </span>
+        </el-dialog>
     </el-card>
   </div>
 </template>
@@ -145,7 +174,6 @@
 <script>
 export default {
   data() {
-
       let rulesEmail=(rule,value,cb)=>{
         const Zemail=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
         if(Zemail.test(value)) {
@@ -154,7 +182,6 @@ export default {
           cb(new Error('请输入合法的邮箱！'))
         }
       }
-
       let rulesMobile=(rule,value,cb)=>{
         const mobile =/^1[3|4|5|7|8][0-9]{9}$/
         if(mobile.test(value)) {
@@ -163,32 +190,32 @@ export default {
           cb(new Error('请输入合法的手机号！'))
         }
       }
-
     //获取用户列表数据
     return {
       userInfo: {
         query: '',
         pagenum: 1, //当前页码
-        pagesize: 4 //每页显示几条数据
+        pagesize: 10 //每页显示几条数据
       },
       total: 0,
       searchValue: '',
       userList: [],
       addDialogVisible:false,
+      eidtUsersSync:false,
       //添加用户表单
       addUsersFrom:{
-          uname:'',
-          upwd:'',
+          username:'',
+          password:'',
           email:'',
           mobile:''
       },
       //添加用户表单验证规则
       addUsersRules:{
-          uname: [
+          username: [
             { required: true, message: '请输入用户名', trigger: 'blur' },
             { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
           ],
-          upwd: [
+          password: [
             { required: true, message: '请输入密码', trigger: 'blur' },
             { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' }
           ],
@@ -198,11 +225,23 @@ export default {
           mobile: [
              { validator:rulesMobile, trigger: 'blur' }
           ],
-     
-      }
+      },
+    //编辑用户表单验证规则
+      editUsersRules:{
+        username:[
+            { required: true, message: '请输入用户名', trigger: 'blur' },
+            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          ],
+          email: [
+             { validator: rulesEmail, trigger: 'blur' }
+          ],
+          mobile: [
+             { validator:rulesMobile, trigger: 'blur' }
+          ]
+      },
+      editForm:{},
 
       
-    
     }
   },
   methods: {
@@ -250,23 +289,83 @@ export default {
       this.addDialogVisible=true
     },
     //确定
-    yesAddUser(){
-      console.log(this.$refs.addUserRef.$el);
+    
+    //取消
+    usercancel(val){
+      this.$refs[val].resetFields()
     },
+    handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_=> {
+            done();
+          })
+          .catch(_=> {});
+      }
+    ,
     //确定的时候验证全部表单
      yesAddUser(formName) {
-        this.$refs[formName].validate((valid) => {
+        this.$refs[formName].validate(async valid => {
           if (valid) {
-            alert('成功!');
+              let {data:res} = await this.$axios.post('users',this.addUsersFrom)
+              if(res.meta.status !==201) return this.$message.error('添加失败!')
+              this.$message.success('添加成功!')
+              this.addDialogVisible=false
+              this.getUserList()
           } else {
-            console.log('error submit!!');
+            console.log('添加失败!');
             return false;
           }
         });
       },
+      //显示编辑用户对话框
+      async showEdit(id){
+        this.eidtUsersSync=true
+        console.log(id);
+        let {data:res} = await this.$axios.get(`users/${id}`)
+        if(res.meta.status !== 200) return this.$message.error('获取失败')
+        this.$message.success('获取成功')
+        this.editForm=res.data
+        console.log(this.editForm);
+      },
+      //监听关闭对话光事件
+      editFormClose(ref){
+        this.$refs[ref].resetFields()
+          this.eidtUsersSync=false
+      },
+      //修改用户信息并以交
+       editUserInfo(editUserRefs){
+       this.$refs[editUserRefs].validate(async bool=>{
+         if(!bool) return 
+         //修改用户信息请求
+         let {data:res} = await this.$axios.put(`users/${this.editForm.id}`,{email:this.editForm.email,mobile:this.editForm.mobile})
+         if(!200) return this.$message.error('更新失败!')
+         this.$message.success('更新成功!')
+         this.eidtUsersSync=false
+         this.getUserList()
+         this.$refs[editUserRefs].resetFields()
+       })
+      },
+      async deleteUser(id){
+        
+        
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(async () => {
+          let {data:res} =await this.$axios.delete(`/users/${id}`)
+          if(!res.meta.status) return this.message.error('删除失败!')
+          this.$message.success('删除成功!')
+          this.getUserList()
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+      
+      }
   },
-
-
   created() {
     this.getUserList()
   }
