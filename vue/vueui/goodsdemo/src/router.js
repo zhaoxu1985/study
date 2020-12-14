@@ -4,7 +4,11 @@ import login from './components/login.vue'
 import home from './components/home.vue'
 import welcome from './components/welcome.vue'
 import users from './components/users.vue'
-import roles from './components/roles.vue'
+import roles from './components/power/roles.vue'
+import rights from './components/power/rights.vue'
+//引入 商品分类 cate 路由
+import cate from './components/goods/cate.vue'
+
 Vue.use(Router)
 
 let router = new Router({
@@ -33,9 +37,18 @@ let router = new Router({
         {
           path:'/roles',
           component:roles
+        },
+        {
+        path:'/rights',
+        component:rights
+        },
+        {
+          path:'/categories',
+          component:cate
         }
       ]
-    }
+    },
+   
   ]
 })
 router.beforeEach((to, from, next) => {

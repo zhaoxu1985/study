@@ -42,7 +42,10 @@
         </el-aside>
         <!-- 左侧区域结束 -->
         <!-- 右侧区域 -->
-        <el-main class="right_box"><router-view></router-view></el-main>
+        <el-main class="right_box">
+          <router-view></router-view>
+          
+        </el-main>
         <!-- 右侧区域结束 -->
       </el-container>
     </el-container>
@@ -79,7 +82,7 @@ export default {
        let {data:res} = await this.$axios.get('/menus')
        if(res.meta.status !== 200) return this.$message.error('错误')
        this.Menulist=res.data
-       return this.$message({type:'success',message:res.meta.msg, showClose: true,center:true})
+       
     },
     sessionleft_path:function(path){
       window.sessionStorage.setItem('activePath','/'+path)
@@ -89,7 +92,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .iconfont{
   margin-right: 10px;

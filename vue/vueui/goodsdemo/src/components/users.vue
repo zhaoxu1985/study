@@ -17,17 +17,17 @@
             v-model="userInfo.query"
             class="input-with-select"
             clearable
-            @clear='clearSearch'
-          >
+            @clear='clearSearch'>
             <el-button
               @click='searchBtn'
               slot="append"
-              icon="el-icon-search"
-            ></el-button> </el-input
-        ></el-col>
-        <el-col :span="4">
-          <el-button @click="addUsers" type="primary">添加用户</el-button></el-col
-        >
+              icon="el-icon-search">
+            </el-button>
+          </el-input>
+        </el-col>
+      <el-col :span="4">
+          <el-button @click="addUsers" type="primary">添加用户</el-button>
+      </el-col>
       </el-row>
 
       <div class="text item"></div>
@@ -86,7 +86,7 @@
                 class="item"
                 effect="dark"
                 :enterable="false"
-                content="分配权限"
+                content="分配角色"
                 placement="top"
               >
                 <el-button
@@ -136,12 +136,12 @@
                 <el-input v-model="addUsersFrom.mobile"></el-input>
               </el-form-item>
           </el-form>
-          <div>
+          
             <span slot="footer" class="dialog-footer">
               <el-button @click="addDialogVisible=false">取消</el-button>
               <el-button type="primary" @click="yesAddUser('addUserRef')">确 定</el-button>
             </span>
-          </div>
+        
       </el-dialog>
   <!-- 编辑对话框 -->
         <el-dialog
@@ -167,7 +167,37 @@
             <el-button type="primary" @click="editUserInfo('editUserRefs')">确 定</el-button>
           </span>
         </el-dialog>
-    </el-card>
+      <!-- 分配角色卡片 -->
+      <el-dialog
+          title="分配角色"
+          :visible.sync="AssigningRolesVisible"
+          width="50%"
+          @close='colseRoleClearSelece'
+          >
+          <span>
+            <div>用户名:{{roleUserInfo.userName}}</div>
+            <div>用户角色:{{roleUserInfo.role_Name}}</div>
+           
+            <p>
+               分配新的角色:
+               <el-select v-model="selectRoleOptions" placeholder="请选择">
+                <el-option
+                  v-for="item in rolesList"
+                  :key="item.id"
+                  :label="item.roleName"
+                  :value="item.id">
+                </el-option>
+              </el-select>
+            </p>
+          </span>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="AssigningRolesVisible = false">取 消</el-button>
+            <el-button type="primary" @click="clickAssigningRoles">确 定</el-button>
+          </span>
+    </el-dialog>
+
+
+  </el-card>
   </div>
 </template>
 
@@ -191,7 +221,7 @@ export default {
         }
       }
     //获取用户列表数据
-    return {
+    return { 
       userInfo: {
         query: '',
         pagenum: 1, //当前页码
@@ -239,9 +269,21 @@ export default {
              { validator:rulesMobile, trigger: 'blur' }
           ]
       },
+      //编辑对话框中的用户信息
       editForm:{},
 
-      
+        //分配角色显示隐藏
+        AssigningRolesVisible:false,
+      //分配角色的默认信息
+      roleUserInfo:{
+        userName:'',
+        role_Name:'',
+        id:0
+      },
+      //所有角色信息
+      rolesList:[],
+      //分配新角色选中的下拉菜单数据
+      selectRoleOptions:[],
     }
   },
   methods: {
@@ -254,9 +296,16 @@ export default {
       this.userList = res.data.users
       this.total = res.data.total
     },
-    //分配权限
-    assignPermissions(val) {
-      console.log(val)
+    //分配权限按钮，并且控制显示
+    async assignPermissions(val) {
+      this.roleUserInfo.id=val.id
+      console.log(this.roleUserInfo.id);
+      this.AssigningRolesVisible=true
+      this.roleUserInfo.userName=val.username
+      this.roleUserInfo.role_Name=val.role_name
+      let {data:res} = await this.$axios.get('/roles')
+      if(res.meta.status != 200) return this.$message.error('获取失败');
+      this.rolesList=res.data
     },
     //每页显示几条数据
     handleSizeChange(val) {
@@ -347,7 +396,6 @@ export default {
       },
       async deleteUser(id){
         
-        
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -364,6 +412,24 @@ export default {
           });          
         });
       
+      },
+      //分配角色确定按钮
+       async clickAssigningRoles(){
+        let id =this.roleUserInfo.id
+        if(!this.selectRoleOptions) return this.$message.error('请选择角色')
+        let {data:res} = await this.$axios.put(`users/${id}/role`,{
+          rid:this.selectRoleOptions
+        })
+        console.log(res.meta);
+        if(res.meta.status !==200)return this.$message.error('分配角色失败!')
+        this.$message.success('分配角色成功!')
+        this.AssigningRolesVisible=false
+        this.getUserList() 
+      },
+      //监听分配角色关闭，并清空选择记录
+      colseRoleClearSelece(){
+        this.selectRoleOptions=''
+        this.rolesList=''
       }
   },
   created() {
@@ -372,7 +438,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .text {
   font-size: 14px;
 }
