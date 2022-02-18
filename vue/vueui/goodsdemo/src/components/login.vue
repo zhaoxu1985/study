@@ -2,34 +2,46 @@
   <div class="box">
     <div class="box_content">
       <div class="box_img">
-        <img src="../assets/logo.png" alt="" />
+        <img
+          src="../assets/logo.png"
+          alt=""
+        >
       </div>
       <div class="form_box">
         <el-form
+          ref="ruleForm"
           :model="ruleForm"
           :rules="rules"
-          ref="ruleForm"
           style="margin:0px"
         >
           <el-form-item prop="name">
             <el-input
-              prefix-icon="el-icon-user"
               v-model="ruleForm.name"
-            ></el-input>
+              prefix-icon="el-icon-user"
+            />
           </el-form-item>
 
-          <el-form-item style="width:100%" prop="upwd" autocomplete="off">
+          <el-form-item
+            style="width:100%"
+            prop="upwd"
+            autocomplete="off"
+          >
             <el-input
-              prefix-icon="el-icon-lock"
               v-model="ruleForm.upwd"
-            ></el-input>
+              prefix-icon="el-icon-lock"
+            />
           </el-form-item>
 
           <el-form-item class="button_box">
-            <el-button type="primary" @click="submitForm('ruleForm')"
-              >登录</el-button
+            <el-button
+              type="primary"
+              @click="submitForm('ruleForm')"
             >
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
+              登录
+            </el-button>
+            <el-button @click="resetForm('ruleForm')">
+              重置
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -39,6 +51,7 @@
 
 <script>
 export default {
+  
   data() {
     return {
       ruleForm: {
@@ -52,7 +65,7 @@ export default {
         ],
         upwd: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          { min: 3, max: 100, message: '长度在 3 到 100 个字符', trigger: 'blur' }
         ]
       }
     }
@@ -84,7 +97,6 @@ export default {
             })
           }
         } else {
-          console.log('error submit!!')
           return false
         }
       })

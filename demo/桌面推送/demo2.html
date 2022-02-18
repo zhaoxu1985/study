@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">有人想加你为好友</button>
+    <p id="text"></p>
+    <script>
+ 
+(function (){
+    if(window.Notification){
+        var btn = document.getElementById("button");
+        var txt = document.getElementById("text");
+        btn.onclick = function (){
+            if(Notification.permission == "granted"){
+                popNotice();
+            }else if(Notification.permission != "denied"){
+                Notification.requestPermission().then(function (permission){
+                    popNotice()
+                })
+            }
+        };
+        function popNotice(){
+            if(Notification.permission == "granted"){
+                var notification = new Notification("你好:",{
+                    body:"请问今晚有空吗",
+                    icon:"http://image.zhangxinxu.com/左边头像地址"
+                });
+                notification.onclick = function (){
+                    txt.innerHTML = new Date().toTimeString().split(" ")[0]+"收到信息";
+                    notification.close();
+                }
+            }
+        }
+    }else{
+        console.log("浏览器不支持Notification");
+    }
+})();
+    </script>
+    
+</body>
+</html>

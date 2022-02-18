@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [{
+            id: 1,
+            value: 'aaa'
+        }, {
+            id: 2,
+            value: 'bbb'
+        }, {
+            id: 3,
+            value: 'ccc'
+        }, {
+            id: 4,
+            value: 'ddd'
+        }]
+        
+        let arr2 = [{
+            id: 4,
+            value: 'true'
+        }, {
+            id: 2,
+            value: 'true'
+        }]
+
+        for (let i = 0; i < arr2.length; i++) {
+            for (let j = 0; j < arr1.length; j++) {
+                if(arr2[i].id==arr1[j].id){
+                    arr1[j].value = arr2[i].value
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>l

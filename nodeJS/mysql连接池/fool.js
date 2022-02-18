@@ -7,5 +7,3 @@ const fs = require("fs");
 const path = require("path");
 
 mysql.createPool()
-
-Course

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform-origin:100% 100%;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="box_2">
+
+        </div>
+    </div>
+    <script>
+        const app = document.querySelector('#box');
+
+        const hammertime = new Hammer(app);
+
+        hammertime.get('pinch').set({
+            enable: true
+        });
+        hammertime.get('swipe').set({
+            direction: Hammer.DIRECTION_ALL
+        });
+
+        let end = 0
+        hammertime.on('pinchstart pinchend pinchin pinchout',e=>{
+            console.log(e);
+            if(e.type=='pinchstart'){
+                e.distance=0
+                e.distance+=end
+            }
+            if(e.distance<100){
+                e.distance=100
+            }
+            app.style.width=`${e.distance}px`
+            app.style.height=`${e.distance}px`;
+            if(e.type=='pinchend'){
+                end=e.distance
+                console.log('结束:',e.distance);
+            }
+        })
+    </script>
+</body>
+
+</html>

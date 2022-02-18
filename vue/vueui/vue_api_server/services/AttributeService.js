@@ -16,7 +16,6 @@ module.exports.getAttributes = function(cat_id,sel,cb) {
 		cb(null,attributes);
 	});
 }
-
 /**
  * 创建参数
  * 

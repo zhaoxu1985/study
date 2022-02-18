@@ -1,0 +1,17 @@
+@mixin isbtn($w,$h,$bg){
+    width: $w;
+    height: $h;
+    border-radius: 20px;
+    background-color: $bg;
+    @if $bg== red{
+        box-shadow: 1px 1px 10px 1px yellow;
+    }@else{
+        box-shadow: 1px 1px 10px 1px rgb(0, 246, 246);
+    }
+}
+input{
+    @include isbtn(80px,50px,orange)
+}
+button{
+    @include isbtn(100px,100px ,red )
+}

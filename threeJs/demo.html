@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/three.js/r128/three.module.min.js"></script> -->
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvasBox"></div>
+
+    <script>
+        let box = document.getElementById('canvasBox');
+        const scene = new THREE.Scene(); //创建创景
+        // 参数 1：视野的角度(deg) 2：长款比 一个物体除以它的高度的值，3 近截面，4 远截面
+        const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000) //创建相机
+        //渲染器
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
+        // 设置渲染器的大小
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        // 把场景添加到显示区域
+        box.appendChild(renderer.domElement)
+        scene.position.z = 1
+
+
+        //引入一个材质
+        //添加物体  以一个立方体为例
+        const geometry = new THREE.BoxGeometry(2, 2, 2); //创建了一个立方体
+
+        const loader = new THREE.CubeTextureLoader();
+        loader.setPath('./');
+        const textureCube = loader.load([
+            'a.jpg', 'a1.jpg',
+            'b.jpg', 'b1.jpg',
+            'c.jpg', 'c1.jpg'
+        ]);
+
+        const material = new THREE.MeshBasicMaterial({
+            // color: 0xffffff,
+            envMap: textureCube,
+            fog: false
+        });
+
+        material.needsUpdate = true
+        //个体立方体设置一个材质,threeJs内置有几种材质,
+
+        const mesh = new THREE.Mesh(geometry, material) //创建一个立方体,并且给渲染一个材质
+
+        scene.add(mesh)
+        camera.position.z = 5;
+        mesh.rotation.y += 1;
+        //把这个物体 添加到网格中
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera)
+            mesh.rotation.x += 0.01;
+
+        }
+        animate()
+    </script>
+</body>
+
+</html>

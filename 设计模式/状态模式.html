@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>aaaa <br> aaa</div>
+    <script>
+        // 把一些列的方法 状态 放入方法中，
+        function state() {
+            let state = [],
+                stateFun = {
+                    跳() {
+                        console.log('跳')
+                    },
+                    走() {
+                        console.log('走')
+                    },
+                    蹦() {
+                        console.log('蹦')
+                    },
+                    蹲() {
+                        console.log('蹲')
+                    }
+                }
+            //声明用于更改状态的方法
+            const activeState = {
+                //修改状态
+                updateState(arr) {
+                    // console.log('更改状态为:'+ arr)
+                    state = arr
+                    return this
+                },
+                //触发动作
+                go() {
+                    // console.log('触发动作')
+                    state.forEach(e => stateFun[e]() && stateFun[e] && 'aaa')
+                    return this
+                }
+            }
+            return {
+                change: activeState.updateState,
+                go: activeState.go
+            }
+        }
+        //动作可选值 :跳走蹦蹲
+        state()
+            .change(['蹲', '蹦'])
+            .go()
+    </script>
+</body>
+
+</html>

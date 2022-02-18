@@ -1,0 +1,29 @@
+{
+  "name": "socket",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "lamejs": "^1.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "socket.io-client": "^3.0.4",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vue-socket.io": "^3.0.10",
+    "vue-touch": "^2.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@vant/area-data": "^1.1.1",
+    "@vue/cli-plugin-babel": "^3.12.0",
+    "@vue/cli-service": "^3.12.0",
+    "babel-plugin-import": "^1.13.3",
+    "socket.io": "^3.0.4",
+    "vant": "^2.12.1",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

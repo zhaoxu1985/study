@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slot</title>
+    <script src="./vue.js"></script>
+    <style>
+        .z-tree-ul {
+            width: 100%;
+            list-style: none;
+        }
+
+        .z-tree-ul li {
+            cursor: pointer;
+        }
+
+
+        .a-box {
+            width: 500px;
+            height: auto;
+            min-height: 300px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .open{
+            transition: 1s all;
+            
+        }
+        .shut{
+            transition:height 1s all; 
+            height: 23.78px;
+            overflow: hidden;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <c-a></c-a>
+
+    </div>
+
+    <script>
+        const zInput = Vue.component('z-tree', {
+            inheritAttrs: false,
+            props: ['data'],
+            render(h) {
+                let that = this
+                return h(
+                    'ul', {}, [this.initTree(this.data)]
+                )
+            },
+            data() {
+                return {}
+            },
+            mounted() {
+                console.log('更新了')
+            },
+            methods: {
+                initTree(data) {
+                    const h = this.$createElement
+
+                    return data.map((ele, i) => {
+                        return h('li', {
+                            attrs: {
+                                isOpen: true
+                            },
+                            on: {
+                                click: ()=>{
+                                    this.liClick(event,ele,i)
+                                }
+                            }
+                        }, [ele.label,this.makeBtn(event,ele,i), this.isHaveChild(ele)])
+                    })
+                },
+                isHaveChild(ele) {
+                    const h = this.$createElement
+                    const list = h(ele.children ? 'ul' : '', {}, [ele.children ? ele.children.map((e,i) => {
+                        return h('li', {}, [e.label,this.makeBtn(event,e,i),this.isHaveChild(e)])
+                    }) :"", ])
+                    return list
+                },
+                liClick(event,e,i) {
+                    //不存在 展开 或 折叠 ，新增记录展开折叠属性
+                    e.isOpen?e.isOpen=false:e.isOpen=true
+                    if(e.isOpen){//关
+                        const height = event.target.getBoundingClientRect().height
+                        event.target.className="shut"
+                    }else{ //开
+                        event.target.className="open"
+                        
+                    }
+                },
+                //制造工厂：按钮
+                makeBtn(event,e,i){
+                    const h = this.$createElement
+                    const btn = h('button',
+                    {
+                        on:{
+                            click:()=>{
+                                this.btnClick(event,e,i)
+                            }
+                        }
+                    },'点击')
+                    return btn
+                },
+                btnClick(event, e, i) {
+                    console.log(e,i)
+                    e.children ? e.children.push({
+                        id: 11,
+                        label: prompt('请输入')
+                    }) : 
+                    e.children=[{id:123,label:prompt('请输入') }]
+                    this.$forceUpdate()
+                }
+            }
+        })
+        const componentA = Vue.component('c-a', {
+            template: `
+              <div>
+                  <div class="a-box">
+                      <z-tree :data="dataList"></z-tree>
+                  </div>
+              </div>
+          `,
+            data() {
+                return {
+                    dataList: [{
+                            id: 1,
+                            label: '中国',
+                            children: [{
+                                    parent: 1,
+                                    id: 11,
+                                    label: '中国',
+                                },
+                                {
+                                    parent: 1,
+                                    id: 12,
+                                    label: '中国',
+                                },
+                                {
+                                    parent: 1,
+                                    id: 13,
+                                    label: '中国',
+                                },
+                                {
+                                    parent: 1,
+                                    id: 14,
+                                    label: '中国',
+                                },
+
+                            ]
+                        },
+                        {
+                            id: 2,
+                            label: '中国'
+                        },
+                        {
+                            id: 3,
+                            label: '中国'
+                        }, {
+                            id: 4,
+                            label: '中国'
+                        }, {
+                            id: 5,
+                            label: '中国'
+                        },
+                        {
+                            id: 6,
+                            label: '中国'
+                        },
+                    ],
+
+                }
+            },
+            methods: {
+
+            },
+        })
+        const vm = new Vue({
+            el: '#app',
+
+        })
+    </script>
+</body>
+
+</html>

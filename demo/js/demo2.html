@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const address = [{
+                id: 1,
+                name: '北京市',
+                children: [{
+                        id: 11,
+                        name: '海淀区',
+                        children: [{
+                            id: 111,
+                            name: '中关村',
+                        }]
+                    },
+                    {
+                        id: 12,
+                        name: '朝阳区',
+                    },
+                ],
+            },
+            {
+                id: 2,
+                name: '河北省'
+            }
+        ]
+
+        function getNameById(address, id) {
+
+            // 在这里实现你的代码
+            for (let i = 0; i < address.length; i++) {
+                if (address[i].id === id) {
+                    return console.log(address[i].name)
+                }
+                if (address[i].children) {
+                    getNameById(address[i].children, id)
+                }
+            }
+
+        }
+
+        getNameById(address, 111)
+    </script>
+</body>
+
+</html>

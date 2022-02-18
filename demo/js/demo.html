@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <script>
+        let obj = {
+    "from": 2000,
+    "to":2021,
+    "data":[{
+        "year":2000,
+        "name":"2000年谋文件1"
+    },{
+        "year":2000,
+        "name":"2000年谋文件2"
+    },{
+        "year":2021,
+        "name":"2021年谋文件"
+    },{
+        "year":2008,
+        "name":"2008年谋文件1"
+    },{
+        "year":2009,
+        "name":"2009年谋文件1"
+    },{
+        "year":2009,
+        "name":"2000年谋文件2"
+    },{
+        "year":2013,
+        "name":"2013年谋文件"
+    }]
+}
+        let arr = []
+
+        //把年份生成 [ {year:2000....,fileName:''} ]
+        for(let i =obj.from;i<obj.to+1;i++){
+            arr.push({
+                year:i,
+                fileName:''
+            })
+        }
+        //再fileName字段 对应插入文件名
+        arr.filter((e,i)=>{
+            obj.data.filter((j,k)=>{
+                if(e.year==j.year){
+                    e.fileName+=`${j.name},`
+                }
+            })
+        })
+
+        let str = `
+        <table border='' cellspacing='' cellpadding=''>
+            <thead>
+                <tr>
+                    <td>年份</td>
+                    <td>文件名</td>
+                </tr>
+            </thead>
+        `;
+        for(let i =0;i<arr.length;i++){
+            str+=`<tr>
+                    <td>${arr[i].year}</td>
+                    <td>${arr[i].fileName}</td>
+                </tr>`
+
+            if(i==arr.length-1){
+                str+="</table>"
+            }
+        }
+        document.write(str)
+    </script>
+</body>
+</html>

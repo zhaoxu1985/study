@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择框封装</title>
+    <script src="./vue.js"></script>
+    <style>
+        .btnStyle {
+            width: 200px;
+            height: 30px;
+            border: 0.8px solid rgb(163, 162, 162);
+            border-radius: 999px;
+            outline: none;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <c-a></c-a>
+    </div>
+    <script>
+        const zInput = Vue.component('z-input', {
+            inheritAttrs: false,
+            template: `
+                <div>
+                    <input type="checkbox" v-on="myInput"  class="btnStyle"></input>
+                </div>
+            `,
+            props: ['data','value'],
+            computed: {
+                myInput(){
+                    let that = this
+                    return {
+                        change:function(e){
+                            that.$emit('input',e.target.checked==true?1:0)
+                        }
+                    }
+                },
+                inputListeners: function () {
+                    var vm = this
+                    // `Object.assign` 将所有的对象合并为一个新对象
+                    let obj = Object.assign({},
+                        // 我们从父级添加所有的监听器
+                        this.$listeners,
+                        // 然后我们添加自定义监听器，
+                        // 或覆写一些监听器的行为
+                        {
+                            // 这里确保组件配合 `v-model` 的工作
+                            input: function (event) {
+                                vm.$emit('input', event.target.value)
+                            }
+                        }
+                    )
+                    console.log(obj)
+                    return obj
+                }
+            },
+            mounted() {
+                console.log('props->>',this)
+                console.log('$listeners->>>',this.$listeners)
+                console.log('$attrs',this.$attrs)
+            },
+        })
+        const componentA = Vue.component('c-a', {
+            template: `
+                <div>
+                    <z-input v-bind="$attrs" :data="2" v-model="value1" value="33"  id="sss" size="aaa"></z-input>
+                    <z-input v-bind="$attrs" :data="2" v-model="value1" value="34"  id="s2" size="d2"></z-input>
+                    <button @click="show">查看</button>
+                </div>
+            `,
+            data() {
+                return {
+                    value1: ''
+                }
+            },
+            watch: {
+                // value1(data) {
+                //     console.log(data)
+                // }
+            },
+            methods: {
+                show() {
+                    console.log(this.value1)
+                }
+            },
+        })
+        //! 阿松大
+        const vm = new Vue({
+            el: '#app',
+
+        })
+    </script>
+</body>
+
+</html>

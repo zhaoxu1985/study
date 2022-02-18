@@ -3,48 +3,72 @@
     <el-container class="container">
       <el-header class="header_box">
         <div class="header_content_left">
-          赵旭的后台管理
+          后台管理
         </div>
         <div class="header_content_right">
-          <el-button type="danger" @click="goback">退出</el-button>
+          <el-button
+            type="danger"
+            @click="goback"
+          >
+            退出
+          </el-button>
         </div>
       </el-header>
       <div>
-        <el-radio-group v-model="isCollapse" style="">
-          <el-radio-button :label="false">展开</el-radio-button>
-          <el-radio-button :label="true">收起</el-radio-button>
+        <el-radio-group
+          v-model="isCollapse"
+          style=""
+        >
+          <el-radio-button :label="false">
+            展开
+          </el-radio-button>
+          <el-radio-button :label="true">
+            收起
+          </el-radio-button>
         </el-radio-group>
       </div>
       <el-container>
         <!-- 左侧区域 -->
-        <el-aside class="left_box" style="border-right:none" width=''>
-          <el-menu
-          :default-active='left_router'
+        <el-aside
+          class="left_box"
           style="border-right:none"
+          width=""
+        >
+          <el-menu
+            :default-active="left_router"
+            style="border-right:none"
             class="el-menu el-menu-vertical-demo"
             :collapse="isCollapse"
             unique-opened
             router
-          > 
-   
-            <el-submenu :index="item.id+''" v-for="item in Menulist" :key="item.id">
-              <template  slot="title">
-                <i :class="iconId[item.id]"></i>
-                <span slot="title">{{item.authName}}</span>
+          >
+            <el-submenu
+              v-for="item in Menulist"
+              :key="item.id"
+              :index="item.id+''"
+            >
+              <template slot="title">
+                <i :class="iconId[item.id]" />
+                <span slot="title">{{ item.authName }}</span>
               </template>
-              <el-menu-item-group v-for="item in item.children" :key="item.id">
-                <el-menu-item @click='sessionleft_path(item.path)' :index="'/'+item.path+''">
-                  <i class="el-icon-menu"></i>{{item.authName}}</el-menu-item>
+              <el-menu-item-group
+                v-for="items in item.children"
+                :key="items.id"
+              >
+                <el-menu-item
+                  :index="'/'+items.path+''"
+                  @click="sessionleft_path(items.path)"
+                >
+                  <i class="el-icon-menu" />{{ items.authName }}
+                </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-           
           </el-menu>
         </el-aside>
         <!-- 左侧区域结束 -->
         <!-- 右侧区域 -->
         <el-main class="right_box">
-          <router-view></router-view>
-          
+          <router-view />
         </el-main>
         <!-- 右侧区域结束 -->
       </el-container>
@@ -54,11 +78,7 @@
 
 <script>
 export default {
-  name: 'home',
-  created() {
-    this.getMenuList()
-    this.left_router=window.sessionStorage.getItem('activePath')
-  },
+  name: 'Home',
   data() {
     return {
       isCollapse: false,
@@ -73,16 +93,22 @@ export default {
       }
     }
   },
+  created() {
+    this.getMenuList()
+    this.left_router=window.sessionStorage.getItem('activePath')
+   
+  },
   methods: {
     goback: function() {
       window.sessionStorage.clear()
       this.$router.push('/login')
     },
     getMenuList: async function() {
+        
        let {data:res} = await this.$axios.get('/menus')
        if(res.meta.status !== 200) return this.$message.error('错误')
        this.Menulist=res.data
-       
+       console.log(res.data);
     },
     sessionleft_path:function(path){
       window.sessionStorage.setItem('activePath','/'+path)

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> -->
+    <script src="../深入了解vue/package/vue.js"></script>
+    <style>
+
+    </style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        let vm1 = Vue.component('vm1', {
+            template: `<div>
+                <hr/>
+                children: <button @click="fun1">childrenUpdate</button>
+                children  inject:{{P}}
+            </div>`,
+            inject: {
+                P: {
+                    from: 'Pinject',
+                    default: 'foo'
+                },
+
+            },
+            data() {
+                return {
+                    default: '[[]]'
+                }
+            },
+            methods: {
+                fun1() {}
+            }
+        })
+        let v = new Vue({
+            //el:[节点选择器]
+            el: '#app',
+
+            template: `
+                <div>
+                    <p>{{search}}</p>
+                    <ul>
+                        <li v-for="item in arr" :key="item">{{item}}</li>
+                    </ul>
+                    parent : <button @click="fun1">updateProvide</button>
+                    <vm1></vm1> 
+                </div>
+            `,
+            components: {
+                vm1
+            },
+            //data:存放属性和属性值
+            data: {
+                search: 'search',
+                arr: [1, 2, 3],
+
+            },
+            provide() {
+                return {
+                    Pinject: this.search
+                }
+            },
+            methods: {
+                fun1: function () {
+                    this.search = 'update'
+                    console.log(this)
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

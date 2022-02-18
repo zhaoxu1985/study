@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100%;
+            /* background-color: rgb(243, 145, 17); */
+            display: flex;
+            position: relative;
+        }
+
+        #box>div:nth-child(1) {
+            width: 200px;
+            height: 500px;
+            min-width: 200px;
+            overflow: hidden;
+        }
+
+        #box>div>div:nth-child(1) {
+            width: 200px;
+            height: 500px;
+            min-width: 200px;
+            background-color: aqua;
+            position: fixed;
+            overflow: hidden;
+            top: 0;
+        }
+
+        #box>div:nth-child(2) {
+            width: 100%;
+            /* height: 2000px; */
+            min-width: 800px;
+            font-size: 10rem;
+            text-align: center;
+            background: linear-gradient(#e66465, #9198e5);
+            overflow: hidden;
+        }
+
+        #box>div:nth-child(3)>div {
+            width: 200px;
+            height: 500px;
+            min-width: 200px;
+            background-color: aqua;
+            position: fixed;
+            top: 0;
+            right: 0px;
+        }
+
+        #box>div:nth-child(3) {
+            width: 200px;
+            height: 500px;
+            min-width: 200px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <div>
+            <div></div>
+        </div>
+        <div>
+            中<br />华<br />人<br />民<br />共<br />和<br />国
+        </div>
+        <div>
+            <div></div>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

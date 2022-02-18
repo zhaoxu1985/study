@@ -1,0 +1,18 @@
+
+body{
+    ul{
+        list-style: none;
+        li{
+            $pinkBg:red;
+            width: 200px;
+            background-color: green;
+            a{
+                
+                text-decoration: none;
+            }
+            &:hover{
+                background-color: blue;
+            }
+        }
+    }
+}

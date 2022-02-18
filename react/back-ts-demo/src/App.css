@@ -1,0 +1,9 @@
+@import '~antd/dist/antd.css';
+.homeBox{
+    width: 100%;
+    height: 100vh;
+    background-color: cyan;
+}
+body{
+    text-align: center;
+}

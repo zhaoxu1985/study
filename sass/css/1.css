@@ -1,0 +1,15 @@
+body ul {
+  list-style: none;
+  background-color: aliceblue; }
+  body ul li {
+    width: 100px;
+    background-color: green; }
+    body ul li:nth-child(2n+1) {
+      background-color: coral; }
+    body ul li a {
+      color: white;
+      text-decoration: none; }
+    body ul li:hover {
+      background-color: red; }
+
+/*# sourceMappingURL=1.css.map */

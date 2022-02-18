@@ -25,9 +25,7 @@ server.listen("8000", () => {
 });
 
 server.get("/", (request, response) => {
-  console.log(request.url);
-
-  response.sendFile(__dirname + "/login_signIn.html");
+  // response.sendFile(__dirname + "/login_signIn.html");
 });
 server.post("/login", (request, response) => {
   request.on("data", function (req) {

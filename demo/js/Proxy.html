@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proxy</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = new Proxy([{
+                a: 1,
+                b: 2
+            },
+            {
+                c: 3,
+                e: 4
+            },
+            {
+                f: 5,
+                g: 6
+            }
+        ], {
+            get(obj, prop) {
+                console.log(obj, prop)
+                // if (obj) {
+                //     return obj[prop]
+                // }
+                if (prop === 'number') {
+                    return obj.length;
+                }
+                for (let producs in obj){
+                    if(obj[producs][prop]){
+                        return obj[producs][prop]
+                    }
+                }
+            }
+        })
+        console.log(obj['a'])
+    </script>
+</body>
+
+</html>

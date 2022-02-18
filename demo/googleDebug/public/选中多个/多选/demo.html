@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./ds.min.js"></script>
+    <style>
+        .box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            /* align-items: center; */
+        }
+
+        .content_box {
+            width: 500px;
+            /* height: 500px; */
+            border: 1px solid black;
+            border-radius: 5%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            user-select: none;
+            /* overflow: hidden; */
+        }
+
+        .item {
+            width: 50px;
+            height: 50px;
+            /* padding: 10px; */
+            flex-grow: 1;
+            background-image: url("./img/optional.png");
+            background-size: 100%;
+            border-radius: 10%;
+            margin: 10px;
+        }
+
+        .selectBorder {
+
+            background-color: rgb(102, 194, 74);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="area" class="content_box" >
+            
+        </div>
+    </div>
+
+    <script>
+        let x = 10;
+        let y = 10;
+        let div = ''
+        window.onresize = function () {
+            document.body.style.width = window.innerWidth + 'px';
+        }
+
+        let td = document.getElementsByClassName('box')[0];
+
+        new DragSelect({
+            //可选择的子元素元素
+            selectables: document.querySelectorAll('.content_box>div'),
+            //父级元素
+            area: document.getElementById('area'),
+            useTransform: true,
+            immediateDrag: true,
+            addSelectables: 'true',
+            //选中后的样式
+            selectedClass: 'selectBorder',
+            //元素不可被拖动
+            draggability: false,
+            callback: e => {
+                for (let i = 0; i < e.length; i++) {
+                    e[i].style.backgroundImage = `url(./img/selected.png)`;
+                    e[i].style.backgroundColor = 'rgba(255, 255, 255, 0)'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

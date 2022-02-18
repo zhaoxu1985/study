@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="/uploadVideo" id="formUpload" method="post" name="avatar" enctype="multipart/form-data">
+        
+        <h2>单图上传</h2>
+        <input type="text" name="u_id">
+        <input type="text" name="uname">
+        <input type="file" name="logo">
+        <input id="btn" type="submit"  value="提交">
+
+    </form>
+
+    <script>
+    
+        
+        let btn = document.getElementById('btn')
+        btn.onclick=function(){
+            console.log(avatar.u_id.value);
+            let formUpload = document.getElementById('formUpload');
+            let formdata = new FormData(formUpload);
+             console.log(formdata);
+            // return false
+        }
+        
+        console.log();
+        // input.onchange = async function () {
+        //     var file = this.files[0];
+        //     if (!/video\/\w+/.test(file.type)) {
+        //         /*可以把autio改成其他文件类型 比如 image*/
+        //         alert("只能选择音频文件")
+        //         return false;
+        //     }
+        //     console.log(file.type) /*文件类型*/
+        //     var reader = new FileReader();
+        //     reader.readAsDataURL(file);
+       
+                
+        //         let {data:res} = await axios.post('/uploadVideo',{
+        //             file:file
+        //         })
+     
+        // }
+    </script>
+    <script>
+       
+    </script>
+</body>
+</html>

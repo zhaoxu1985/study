@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width: 500px;height:500px;border:1px solid black;overflow: hidden;">
+        <img id="images" width="100%" src="../../../myweb/img/bangding.png" alt="">
+    </div>
+
+    <script>
+        let div = document.getElementById('box');
+        let img = document.getElementById('images')
+        let x ='';
+        let y ='';
+        let zoom=1;
+        div.addEventListener('mousemove',function(e){
+            x=e.offsetX
+            y=e.offsetY
+        })
+        window.addEventListener('mousewheel',function (e){ 
+            if(e.wheelDelta>0){
+                img.style.transform=`scale(${zoom+=0.03})`
+            }else{
+                if(zoom <=1){
+                    return true
+                }
+                img.style.transform=`scale(${zoom-=0.03})`
+                    
+            }
+         })
+    </script>
+</body>
+</html>

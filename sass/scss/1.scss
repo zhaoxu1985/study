@@ -1,0 +1,23 @@
+$pinkBg:aqua;
+body{
+    ul{
+        list-style: none;
+        background-color: aliceblue;
+        li{
+            $pinkBg:red;
+            $pink:red;
+            &:nth-child(2n+1){
+                background-color: coral
+            };
+            width: 100px;
+            background-color: green;
+            a{
+                color: white;
+                text-decoration: none;
+            }
+            &:hover{
+                background-color: $pinkBg;
+            }
+        }
+    }
+}

@@ -1,56 +1,71 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: 'home' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: 'home' }">
+        首页
+      </el-breadcrumb-item>
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
       <el-breadcrumb-item>权限列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card>
-      <el-button type="primary" @click="addRoles">添加角色</el-button>
-      <el-table :data="rolesList" border stripe ref="rolesUserForm">
+      <el-button
+        type="primary"
+        @click="addRoles"
+      >
+        添加角色
+      </el-button>
+      <el-table
+        ref="rolesUserForm"
+        :data="rolesList"
+        border
+        stripe
+      >
         <el-table-column type="expand">
           <template v-slot="dropDownRoles">
             <div>
               <el-row
-                :class="['bdBottom', i1 == 0 ? 'bdTop' : '', 'vcenter']"
                 v-for="(item1, i1) in dropDownRoles.row.children"
                 :key="item1.id"
+                :class="['bdBottom', i1 == 0 ? 'bdTop' : '', 'vcenter']"
               >
                 <!-- 一级权限列 -->
                 <el-col :span="5">
                   <el-tag
-                    @close="closeTag(dropDownRoles.row, item1.id)"
                     closable
-                    >{{ item1.authName }}</el-tag
+                    @close="closeTag(dropDownRoles.row, item1.id)"
                   >
-                  <i class="el-icon-caret-right"></i>
+                    {{ item1.authName }}
+                  </el-tag>
+                  <i class="el-icon-caret-right" />
                 </el-col>
                 <!-- 二级权限列 -->
 
                 <el-col :span="19">
                   <el-row
-                    :class="[i2 !== 0 ? 'bdTop' : '', 'vcenter']"
                     v-for="(item2, i2) in item1.children"
                     :key="item2.id"
+                    :class="[i2 !== 0 ? 'bdTop' : '', 'vcenter']"
                   >
                     <el-col :span="6">
                       <el-tag
-                        @close="closeTag(dropDownRoles.row, item2.id)"
                         closable
                         type="success"
-                        >{{ item2.authName }}</el-tag
+                        @close="closeTag(dropDownRoles.row, item2.id)"
                       >
-                      <i class="el-icon-caret-right"></i>
+                        {{ item2.authName }}
+                      </el-tag>
+                      <i class="el-icon-caret-right" />
                     </el-col>
                     <el-col :span="18">
                       <el-tag
-                        @close="closeTag(dropDownRoles.row, item3.id)"
-                        closable
-                        type="warning"
                         v-for="item3 in item2.children"
                         :key="item3.id"
-                        >{{ item3.authName }}</el-tag
+                        closable
+                        type="warning"
+                        @close="closeTag(dropDownRoles.row, item3.id)"
                       >
+                        {{ item3.authName }}
+                      </el-tag>
                     </el-col>
                   </el-row>
                 </el-col>
@@ -58,10 +73,20 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column type="index"></el-table-column>
-        <el-table-column label="角色名称" prop="roleName"></el-table-column>
-        <el-table-column label="角色描述" prop="roleDesc"></el-table-column>
-        <el-table-column label="操作" width="400" prop="level">
+        <el-table-column type="index" />
+        <el-table-column
+          label="角色名称"
+          prop="roleName"
+        />
+        <el-table-column
+          label="角色描述"
+          prop="roleDesc"
+        />
+        <el-table-column
+          label="操作"
+          width="400"
+          prop="level"
+        >
           <template v-slot="level">
             <el-tooltip
               class="item"
@@ -76,8 +101,8 @@
                 size="mini"
                 @click="editRoles(level.row.id)"
               >
-                编辑</el-button
-              >
+                编辑
+              </el-button>
             </el-tooltip>
 
             <el-tooltip
@@ -92,8 +117,9 @@
                 icon="el-icon-delete"
                 size="mini"
                 @click="deleteRoles(level.row.id)"
-                >删除</el-button
               >
+                删除
+              </el-button>
             </el-tooltip>
 
             <el-tooltip
@@ -108,8 +134,9 @@
                 icon="el-icon-setting"
                 size="mini"
                 @click="clickAssignPermissions(level.row)"
-                >分配权限</el-button
               >
+                分配权限
+              </el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -124,29 +151,39 @@
     >
       <span>
         <el-form
+          ref="addUserRolesRef"
           :model="addRolesFrom"
           :rules="addUsersRules"
-          ref="addUserRolesRef"
           label-width="80px"
         >
-          <el-form-item label="ID">
-            <el-input v-model="addRolesFrom.roleId"></el-input>
+          <!-- <el-form-item label="ID">
+            <el-input v-model="addRolesFrom.roleId" />
+          </el-form-item> -->
+          <el-form-item
+            label="角色名称"
+            prop="roleName"
+          >
+            <el-input v-model="addRolesFrom.roleName" />
           </el-form-item>
-          <el-form-item label="角色名称" prop="roleName">
-            <el-input v-model="addRolesFrom.roleName"></el-input>
-          </el-form-item>
-          <el-form-item label="角色描述" prop="roleDesc">
-            <el-input v-model="addRolesFrom.roleDesc"></el-input>
+          <el-form-item
+            label="角色描述"
+            prop="roleDesc"
+          >
+            <el-input v-model="addRolesFrom.roleDesc" />
           </el-form-item>
         </el-form>
       </span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="removeAddVisible('addUserRolesRef')"
-          >取 消</el-button
-        >
-        <el-button type="primary" @click="addUserRoles('addUserRolesRef')"
-          >确 定</el-button
-        >
+      <span
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button
+          @click="removeAddVisible('addUserRolesRef')"
+        >取 消</el-button>
+        <el-button
+          type="primary"
+          @click="addUserRoles('addUserRolesRef')"
+        >确 定</el-button>
       </span>
     </el-dialog>
 
@@ -158,24 +195,34 @@
     >
       <span>
         <el-form
+          ref="addUserRolesRef"
           :model="addRolesFrom"
           :rules="addUsersRules"
-          ref="addUserRolesRef"
           label-width="80px"
         >
-          <el-form-item label="角色名称" prop="roleName">
-            <el-input v-model="addRolesFrom.roleName"></el-input>
+          <el-form-item
+            label="角色名称"
+            prop="roleName"
+          >
+            <el-input v-model="addRolesFrom.roleName" />
           </el-form-item>
-          <el-form-item label="角色描述" prop="roleDesc">
-            <el-input v-model="addRolesFrom.roleDesc"></el-input>
+          <el-form-item
+            label="角色描述"
+            prop="roleDesc"
+          >
+            <el-input v-model="addRolesFrom.roleDesc" />
           </el-form-item>
         </el-form>
       </span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="editRolesVisible = false">取 消</el-button>
-        <el-button type="primary" @click="editUserRoles('addUserRolesRef')"
-          >确 定</el-button
-        >
+      <span
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="cancelEditVisible">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="editUserRoles('addUserRolesRef')"
+        >确 定</el-button>
       </span>
     </el-dialog>
 
@@ -187,21 +234,25 @@
     >
       <span>
         <el-tree
+          ref="everyRoleId"
           node-key="id"
           :default-checked-keys="keysRoles"
           default-expand-all
           show-checkbox
           :data="newRolesFrom"
           :props="treeRolesProps"
-          ref="everyRoleId"
-        ></el-tree>
+        />
       </span>
 
-      <span slot="footer" class="dialog-footer">
+      <span
+        slot="footer"
+        class="dialog-footer"
+      >
         <el-button @click="assignPermissionsVisible = false">取 消</el-button>
-        <el-button type="primary" @click="assignPermissions('everyRoleId')"
-          >确 定</el-button
-        >
+        <el-button
+          type="primary"
+          @click="assignPermissions('everyRoleId')"
+        >确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -217,7 +268,7 @@ export default {
       editRolesVisible: false,
       //添加角色的表单数据
       addRolesFrom: {
-        roleId: 0,
+        // roleId: 0,
         roleName: '',
         roleDesc: ''
       },
@@ -247,6 +298,9 @@ export default {
       1: 0
     }
   },
+  created() {
+    this.getrolesList()
+  },
   methods: {
     //页面加载触发,并获取列表内容
     async getrolesList() {
@@ -272,6 +326,8 @@ export default {
     cancelEditVisible(done) {
       this.$confirm('确认关闭？')
         .then(_ => {
+          this.addRolesFrom={}
+          this.editRolesVisible = false
           done()
         })
         .catch(_ => {})
@@ -315,6 +371,7 @@ export default {
         console.log(res)
         if (res.meta.status !== 200) return this.$message.error('编辑失败!')
         this.$message.success('编辑成功!')
+        this.addRolesFrom={}
         this.getrolesList()
         this.$refs[ref].resetFields()
         this.editRolesVisible = false
@@ -374,9 +431,6 @@ export default {
       this.getrolesList()
       this.assignPermissionsVisible=false
     }
-  },
-  created() {
-    this.getrolesList()
   }
 }
 </script>

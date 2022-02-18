@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            /* height: 100px; */
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img width="100%"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAABZJJREFUeF7tne2WokAQQ/H9H9o5iu4wQDU3pFF0sz9niv5IKumqFncuwzBch87/rtffIS+Xy7/Rpz8nU06freKrMat5yc/JXGRtZI/zmBtaIWQYBgJwlWh7gK+eCSEPZE5JiGopU5ZVK1DnqgBTLata8/TnxHIdK26t4Y9CVJBCyIhAL9xuY4WQFTM/pUIcT3U2RKyPZCQZR62m1H2p4zcVEkJGOAmxavXVii8tK4R8KSGkRlcrFqfiqqqpsi8oGluinFNaVghZIvBWywohH0KIc0YRktVK7Agr+yjLCiHLouElZS85LPdk0pZKvk4hWxue/96pOiq7INUUqdDI2kgvQRpDB7e3Xp04qlCBCSHFB1Qke47I1I8lhABGYkgGOyCdbXyCCY152wdUIWSdohDywMVJEJr9JO5yJfUhGamI6dVvqMtUKzRSZBgw4EdDyAZUaiJg5KsEjkLaEJ6GEMdq1NJ1Conj5U71pa5BtTiC570xrBRCBlABqDpyFQx1XhKvriGEGB8UfQUhVQY4d0fqmGSuKrNVNbqH8fN55z2xpmWp4BHJq2OGEJAmBCQSQwh0xvkKhTgVDuDyzxt+BGzS3JF51X2RZCFWWSVFa+9/qix14aQS27Oo5zMhxKhkSKY61Q6xoCPOKEfJe5JRvlwknSvZBJG82mD2mlftMUgyUjcJIQTNRwxJRqLS1pQh5MyEqB7fqxpxm6mtImCPl6+NSRRCCpGWfaGXrdWFEIDJIX3EmaAmXa81kPPw3qlPv/SpLjYKWfqdrZDpba8z2NFkOuSrihWOlUUowaFpWSHEgX/5bAiZvAPmqKgXLS8hhDRK6uFHGkPn4FftlxQupMcgh3drrvIui2QMyQYyDuliyTmgguEkEVEjSYo5PiGkcxeuJsUuQtTsJKpw5O/YC7FKonw1+4kL3PsQtcoiUg0hvD+JQiYIkCwnnxGpxUcrYdGbi70WrvormVe1IEe95FmyZtwYEl+vsoFkUggZ0QshRfNIMl6NsRVCLheJRxLr6KUuUljQqkYFfCterUjn60S3vSFki4bf34cQ8GIGh9OPtAkhX0dwfXFtm+SAVy2OwEn2QsY5KuaQspcsNoSsoxRCHrj0uo4hyfiSxpD0MEQVTgzx72qd5Fn1jovEz9fTTSEhZNn0hRDw6eFXKERt+py+hViW49PkrHAqMefZ276QZYWQEYGjyQwhhdScLHeevROi/nUEkiWVotRnSaHgNI8EPHKLTdZAbTaErCBFqiOVzBAC/pCMCiopOEhMszF0rt/JFTfJNmJNpHEjWeisp9c6W9ZtXb+HkHYzuOcsDSEP1JyCg7xwR2IWVVYvOZPKhFgQiSGdN1mPanfEvvaMiRSiZg8BgIBNYkIIoD2EAJAKq5QV4oBNrmBUVRD1Uv9eg5EULqpKq0Zy1xkSQvZlP+l5QgjA9uUKIS85gHWXITQzlDlUkFRbIxbkVFmtbl6+fleAu0twcoXR8k5l3BCioDWLDSFL8JoKUa/fCTeqRfSKd5RDniWNs5uA8vV7CBkRINXmHosOIQ/UTqkQYh2kuiDNXa+59mQhUfkzRm0qXeUc/seJq+48hIzIzHEIIRtyOY1CjvBUYmWVBTlWQPZC5lWsbi37yfPocpF0rgSwELJNSQhZwch9UeE55J5z8qWEbOdH/Xag23CtVU2kQvvqMySEtK9R7g2n+hoQOfwcyTvnDCFcVdp/oxCVNBKvxpAeyanQyPjzJHqbQgh4RI1ODAEshBS+QwhUYz6KEOLHZEPVOKRvIdmvktAr46u9q2vGlhVCRgRIL0EKBVocvPQuiyjK2Zz6LEm6txJCFkhi1E048YQEYpuu1azNQWy5edtLwCYxDsAEPPXcIGOGEPCFml4WF0LAfxhGD7knmET+VZZ/EiE/8NUm+3ajkaMAAAAASUVORK5CYII="
+            alt="">
+        <h1>aaaa</h1>
+        <h3>bbbb</h3>
+    </div>
+    
+    <button id="generate">生成</button>
+    <script src="./html2canvas.js"></script>
+    <script>
+        let generate = document.getElementById('generate');
+        let baseList = []
+        console.log(generate);
+
+        generate.onclick = function(){
+
+            // 使用html2canvas插件，将数据源中的数据转换成画布。
+            const domList = document.getElementsByClassName('box')
+            console.log(domList)
+            for(let i =0;i<domList.length;i++){
+                  html2canvas(domList[i]).then(canvas => {
+            //         // 修改生成的宽度,这个延时根据自己情况，感觉有必要
+                    setTimeout(() => {
+                        canvas.style.width = "600px";
+                        const canvasImg = canvas.toDataURL("image/png");
+                        baseList.push(canvasImg)
+                        const img = document.createElement('img')
+                        img.src = canvasImg
+                        document.body.appendChild(img)
+                    }, 1000);
+                });
+            }
+              
+
+        }
+    </script>
+
+</body>
+
+</html>

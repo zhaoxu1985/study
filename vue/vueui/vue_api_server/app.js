@@ -4,9 +4,9 @@ var bodyParser = require('body-parser')
 var path = require('path')
 // 路由加载
 var mount = require('mount-routes')
+const cors = require('koa2-cors')
 
 var app = express()
-
 
 /**
  *
@@ -55,10 +55,17 @@ app.use(resextra)
 admin_passport = require('./modules/passport')
 // 设置登录模块的登录函数衔接 passport 策略
 admin_passport.setup(app, managerService.login)
+
+
 // 设置 passport 登录入口点
 app.use('/api/private/v1/login', admin_passport.login)
 // 设置 passport 验证路径
 app.use('/api/private/v1/*', admin_passport.tokenAuth)
+
+
+
+
+
 
 // 获取验证模块
 var authorization = require(path.join(process.cwd(), '/modules/authorization'))
@@ -77,8 +84,11 @@ authorization.setAuthFn(function(req, res, next, serviceName, actionName, passFn
  * 初始化路由
  *
  */
+// post/uesrs,{
+
+// }
 // 带路径的用法并且可以打印出路有表
-mount(app, path.join(process.cwd(), '/routes'), true)
+mount(app, './routes', true)
 
 app.all('/ueditor/ue', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -118,6 +128,7 @@ app.get('/api/private/v1/kuaidi/:orderno', logistics.getLogisticsInfo)
  *
  */
 // 如果没有路径处理就返回 Not Found
+app.use(cors())
 app.use(function(req, res, next) {
   res.sendResult(null, 404, 'Not Found')
 })

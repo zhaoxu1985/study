@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh  ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    
+<body>
+
+    <script>
+        let arr = 
+        [
+            [{
+                    "x": 1,
+                    "y": 1,
+                    "state": 0,
+                    "isNull": 1
+                },
+                {
+                    "x": 1,
+                    "y": 2,
+                    "state": 0,
+                    "isNull": 1
+                },
+                {
+                   "x": 1,
+                   "y": 3,
+                   "state": 0,
+                   "isNull": 1
+                },
+                {
+                    "x": 1,
+                    "y": 4,
+                    "state": 0,
+                    "isNull": 1
+                },
+                {
+                    "x": 1,
+                    "y": 5,
+                    "state": 0,
+                    "isNull": 1
+                }
+
+            ],
+            [{
+                    "x": 2,
+                    "y": 1,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 2,
+                    "y": 2,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 2,
+                    "y": 3,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 2,
+                    "y": 4,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 2,
+                    "y": 5,
+                    "state": 0,
+                    "isNull": 0
+                }
+
+            ],
+            [{
+                    "x": 3,
+                    "y": 1,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 3,
+                    "y": 2,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 3,
+                    "y": 3,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 3,
+                    "y": 4,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 3,
+                    "y": 5,
+                    "state": 0,
+                    "isNull": 0
+                }
+
+            ],
+            [{
+                    "x": 4,
+                    "y": 1,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 4,
+                    "y": 2,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 4,
+                    "y": 3,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 4,
+                    "y": 4,
+                    "state": 0,
+                    "isNull": 1
+                },
+                {
+                    "x": 4,
+                    "y": 5,
+                    "state": 0,
+                    "isNull": 0
+                }
+
+            ],
+            [{
+                    "x": 4,
+                    "y": 1,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 4,
+                    "y": 2,
+                    "state": 0,
+                    "isNull": 1
+                },
+                {
+                    "x": 4,
+                    "y": 3,
+                    "state": 0,
+                    "isNull": 1
+                },
+                {
+                    "x": 4,
+                    "y": 4,
+                    "state": 0,
+                    "isNull": 0
+                },
+                {
+                    "x": 4,
+                    "y": 5,
+                    "state": 0,
+                    "isNull": 0
+                }
+
+            ]
+        ]
+        
+        function movieAutoArrange(arr){
+            let x =0;
+            let y = 0;
+            let scount=0
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j].isNull == 1) {
+                    y++
+                }
+                if (arr[i][j].isNull == 0) {
+                    arr[i][j].y = arr[i][j].y - y
+                }
+            }
+            y = 0
+            let xcount=0;
+            for(let k =0;k<arr[i].length;k++){
+                if(arr[i][k].isNull==0){
+                    xcount++
+                }
+            }
+            if(xcount==0){
+                ++scount
+            }
+            for(let s =0;s<arr[i].length;s++){
+                    
+                    arr[i][s].x=arr[i][s].x-scount
+                    // console.log(s);
+            }
+        }
+        return arr
+    }
+    console.log(movieAutoArrange(arr));
+
+
+
+
+        for(let i=0;i<arr.length;i++){
+            for(let j = 0;j<arr[i].length;j++){
+                if(arr[i][j].isNull==0){
+                    document.write('行:'+arr[i][j].x+'座:'+arr[i][j].y+'&nbsp &nbsp')
+                }
+                if(arr[i][j].isNull==1){
+                    document.write('&nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp&nbsp &nbsp&nbsp')
+                }
+                
+            }
+            document.write('<br>')
+        }
+    </script>
+</body>
+
+</html>

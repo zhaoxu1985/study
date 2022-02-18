@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 100vh;
+            width: 100vw;
+            /* background-color: rgba(235, 11, 11, 0.452); */
+            position: relative;
+        }
+
+        .header {
+            width: 100%;
+            height: 10vh;
+            position: fixed;
+            background-color: rgb(101, 11, 185);
+        }
+
+        .body {
+            width: 100%;
+            height: 65vh;
+            position: fixed;
+            top: 10vh;
+            background-color: aqua;
+            overflow-y: scroll;
+            display: flex;
+            align-items: center;
+          
+        }
+
+        .buttom {
+            width: 100%;
+            height: 25vh;
+            position: fixed;
+            top: 75%;
+            background-color: rgb(16, 255, 124);
+        }
+
+        .movieBody {
+            width: 100%;
+            background-color: chocolate;
+            position: relative;
+            display: flex;
+            /* height: 100%; */
+            justify-content: center;
+      
+        }
+
+        #seatBox {
+            width: 80vw;
+            background-color: rgb(86, 10, 185);
+            transform: translate3d(0,0,0);
+            font-size: 0;
+            -webkit-text-size-adjust: none;
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            border-radius: 10px;
+            background-image: url('./img/optional.png');
+            background-position: center;
+            background-size: 100%;
+            transition: width .2s ease;
+            transform: translate3d(0,0,0);
+        }
+
+        #xIndex {
+            width: 20px;
+            background-color: red;
+            position: fixed;
+            left: 0;
+            border-radius: 20px;
+            padding: 10px;
+       
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="header"></div>
+        <div class="body">
+            <div class="movieBody">
+                <div id='xIndex'>
+                    <div class="index_content">1</div>
+                    <div class="index_content">2</div>
+                    <div class="index_content">3</div>
+                    <div class="index_content">4</div>
+                    <div class="index_content">5</div>
+                    <div class="index_content">6</div>
+                    <div class="index_content">7</div>
+                    <div class="index_content">8</div>
+                </div>
+                <div id="seatBox">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+            </div>
+        </div>
+        <div class="buttom"></div>
+    </div>
+    <script>
+        let seatBox = document.getElementById("seatBox");
+        let seat = document.getElementsByClassName("seat");
+        let indexContent = document.getElementsByClassName('index_content');
+        let xIndex = document.getElementById('xIndex');
+
+        window.onload=function(){
+            compatibleScreen()
+        }
+        function compatibleScreen (){
+            for (let i = 0; i < seat.length; i++) {
+                seat[i].style.width = parseInt(seatBox.clientWidth / 13) + "px";
+                seat[i].style.height = parseInt(seatBox.clientWidth / 13) + "px";
+            }
+            for (let i = 0; i < indexContent.length; i++) {
+                indexContent[i].style.height = parseInt(seatBox.clientWidth / 10) + "px";
+            }
+            xIndex.style.height = parseInt(seatBox.clientHeight-20) + 'px'
+            xIndex.style.width = '0px'
+        }
+        window.addEventListener("resize", () => {
+            compatibleScreen()
+            console.log('调用');
+        });
+    </script>
+</body>
+
+</html>

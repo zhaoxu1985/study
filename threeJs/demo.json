@@ -1,0 +1,647 @@
+{
+    "stream": [
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 392917,
+                "houseName": "薪舍 水长城脚下、八达岭 温暖的家",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/qualifiedpics/day_180925/thumb/201809251005475959_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "今夜特价",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "二钻 2居2床 4人",
+                "commentScore": null,
+                "productPrice": 999,
+                "finalPrice": 799,
+                "location": "北京·怀柔区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥200",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": true,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 14112253,
+                "houseName": "古城地铁简约电影主题大床公寓",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_190717/thumb/201907172044365292_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": null,
+                "summaryText": "二钻 1居1床 2人",
+                "commentScore": null,
+                "productPrice": 438,
+                "finalPrice": 438,
+                "location": "北京·石景山区",
+                "priceTipBadge": null,
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 48917179,
+                "houseName": "顺义、首都机场、新国展、望京、南法信一居复式套房近地铁15号线",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/qualifiedpics/day_210429/thumb/202104291204199516_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "天天特惠",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "1居1床 2人",
+                "commentScore": null,
+                "productPrice": 399,
+                "finalPrice": 271,
+                "location": "北京·顺义区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥128",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": true,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 11123470,
+                "houseName": "山景阳光房",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_190408/thumb/201904081226103658_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "今夜特价",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "二钻 1居1床 2人",
+                "commentScore": null,
+                "productPrice": 208,
+                "finalPrice": 166,
+                "location": "北京·怀柔区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥42",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 48482065,
+                "houseName": "【吾家有客】大兴国际机场北京野生动物园科德学院 空港新苑 ins风 4k超清投影",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_210325/thumb/202103251253178516_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "今夜特价",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "1居1床 2人",
+                "commentScore": null,
+                "productPrice": 328,
+                "finalPrice": 229,
+                "location": "北京·大兴区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥99",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 7696896,
+                "houseName": "免费接或送机 精装loft 超低价公寓",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_181107/thumb/201811071456062040_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": null,
+                "summaryText": "二钻 1居2床 4人",
+                "commentScore": null,
+                "productPrice": 308,
+                "finalPrice": 308,
+                "location": "北京·顺义区",
+                "priceTipBadge": null,
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 394326,
+                "houseName": "古北水镇陈爽民宿二层别墅",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/qualifiedpics/day_180519/thumb/20180519130834684_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "天天特惠",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "三钻 5居9床 13人",
+                "commentScore": null,
+                "productPrice": 838,
+                "finalPrice": 796,
+                "location": "北京·密云区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥42",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": true,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 47271040,
+                "houseName": "近15号线近商圈观景",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_201208/thumb/202012081131232529_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "今夜特价",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "三钻 1居1床 2人",
+                "commentScore": null,
+                "productPrice": 400,
+                "finalPrice": 276,
+                "location": "北京·顺义区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥124",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 256078,
+                "houseName": "北京司马台古北水镇福源绵长精致标间（单间）",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/qualifiedpics/day_181104/thumb/201811041354093651_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "天天特惠",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "二钻 1居2床 2人",
+                "commentScore": null,
+                "productPrice": 160,
+                "finalPrice": 140,
+                "location": "北京·密云区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥20",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": true,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 49282267,
+                "houseName": "【远辰】依山而建海拔一千米山景房",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_210426/thumb/202104262353495359_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "今夜特价",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "5居2床 2人",
+                "commentScore": null,
+                "productPrice": 598,
+                "finalPrice": 388,
+                "location": "北京·昌平区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥210",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 50114035,
+                "houseName": "【米亚罗农庄】全屏投影大床房 异域风情 近地铁 出行便利",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/qualifiedpics/day_210524/thumb/202105240213492877_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": null,
+                "summaryText": "二钻 1居1床 2人",
+                "commentScore": null,
+                "productPrice": 478,
+                "finalPrice": 382,
+                "location": "北京·丰台区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥96",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": true,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 1978585,
+                "houseName": "观景欧式床带摇篮（顺顺民宿）蹦极对面",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_190816/thumb/201908162210463028_360_240.jpeg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "天天特惠",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "二钻 1居1床 2人",
+                "commentScore": null,
+                "productPrice": 323,
+                "finalPrice": 209,
+                "location": "北京·房山区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥114",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 48062824,
+                "houseName": "通州北关6号线物资学院环球主题公园新光大中心万达购物朝阳大悦城欢乐谷南锣鼓巷温馨私享Loft复式",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_210109/thumb/202101092232133095_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "天天特惠",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "二钻 1居1床 2人",
+                "commentScore": null,
+                "productPrice": 460,
+                "finalPrice": 312,
+                "location": "北京·通州区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥148",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": true,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 48061144,
+                "houseName": "玉渡山温馨私享四合院榻榻米房",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_210109/thumb/202101091318184024_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": null,
+                "summaryText": "二钻 1居1床 4人",
+                "commentScore": null,
+                "productPrice": 418,
+                "finalPrice": 418,
+                "location": "北京·延庆区",
+                "priceTipBadge": null,
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        },
+        {
+            "discoveryContentType": 3,
+            "data": {
+                "houseId": 48357169,
+                "houseName": "兰亭居民宿--平谷玻璃台周边休闲惬意的庭院，紧邻梨树沟山体滑车 —石林峡—天云山—明长城；东指壶",
+                "image": {
+                    "url": "https://pic.tujia.com/upload/landlordunit/day_210305/thumb/202103052217379510_360_240.jpg",
+                    "width": 360,
+                    "height": 240
+                },
+                "iconTag": {
+                    "type": 0,
+                    "text": "今夜特价",
+                    "color": "",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0
+                },
+                "summaryText": "三钻 8居2床 3人",
+                "commentScore": null,
+                "productPrice": 498,
+                "finalPrice": 398,
+                "location": "北京·平谷区",
+                "priceTipBadge": {
+                    "type": 0,
+                    "text": "已减¥100",
+                    "color": "#FFFFFF",
+                    "background": null,
+                    "border": null,
+                    "orderIndex": 0,
+                    "tip": null,
+                    "jumpUrl": null,
+                    "colorType": 0,
+                    "gradient": {
+                        "startColor": "#FF6666",
+                        "endColor": "FF9F9F"
+                    }
+                },
+                "showHouseVideo": false,
+                "cityId": 48,
+                "houseAdvert": null,
+                "activityInfo": null
+            }
+        }
+    ],
+    "finished": false,
+    "hotFilters": null,
+    "conditions": null,
+    "excludeUnitIdSet": [
+        392917,
+        14112253,
+        48917179,
+        11123470,
+        48482065,
+        7696896,
+        394326,
+        47271040,
+        256078,
+        49282267,
+        50114035,
+        1978585,
+        48062824,
+        48061144,
+        48357169
+    ]
+}
